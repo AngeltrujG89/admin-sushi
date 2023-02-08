@@ -1,0 +1,224 @@
+<ion-content>
+
+
+  <div class="container-fluid d-flex h-100">
+
+    <div class="m-auto">
+
+      <ion-grid  class="w-100 container" >
+        <ion-row>
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" [sizeLg]="user?.role === 'COLABORADOR' ? 6 : 4">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/fidelizacion.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Orders</h1>
+                  </ion-label>
+                  <ion-button routerLink="/pedidos" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" [sizeMd]="user?.role === 'GERENTE' ? 4:6" [sizeLg]="user?.role === 'GERENTE' ? 4:6" *ngIf="user?.role !== 'ADMIN'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/restaurante.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Restaurants</h1>
+                  </ion-label>
+                  <ion-button  routerLink="/restaurant">
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col class="my-3 mx-auto " sizeSm="12" sizeMd="6" sizeLg="4" *ngIf="user?.role == 'ADMIN'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="https://www.tornadostore.com/documentos/93/370_sucursales.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Branches</h1>
+                  </ion-label>
+                  <ion-button routerLink="/branch" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4" *ngIf="user?.role == 'ADMIN'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/restaurante.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Restaurants</h1>
+                  </ion-label>
+                  <ion-button routerLink="/restaurant">
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4" *ngIf="user?.role == 'ADMIN' || user?.role == 'GERENTE'" >
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/usuariosapp.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Collaborators</h1>
+                  </ion-label>
+                  <ion-button routerLink="usuarios" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4" *ngIf="user?.role == 'ADMIN' || user?.role == 'GERENTE'" >
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="https://www.espaciofoodservice.cl/wp-content/uploads/2019/06/59451143_1215563435275337_5293594235096793088_n.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Deliveries</h1>
+                  </ion-label>
+                  <ion-button routerLink="delivery" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4"  *ngIf="user?.role == 'ADMIN' || user?.role == 'GERENTE'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/reportes.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Reports</h1>
+                  </ion-label>
+                  <ion-button routerLink="reportes" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4"  *ngIf="user?.role == 'ADMIN' || user?.role == 'GERENTE'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/cobrar.jpg" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Coupons</h1>
+                  </ion-label>
+                  <ion-button routerLink="cuopons" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4"  *ngIf="user?.role == 'ADMIN' || user?.role == 'GERENTE'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="https://i0.wp.com/www.diegocoquillat.com/wp-content/uploads/2019/09/Habitos-del-consumidor-a-la-hora-de-seleccionar-el-restaurante.jpg?fit=700%2C336&ssl=1" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Clients</h1>
+                  </ion-label>
+                  <ion-button routerLink="clientes" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+
+          <ion-col class="my-3 mx-auto" sizeSm="12" sizeMd="6" sizeLg="4"  *ngIf="user?.role == 'ADMIN' || user?.role == 'GERENTE'">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../../assets/img/quejas.png" class="w-100 ion-no-margin" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Help us to improve</h1>
+                  </ion-label>
+                  <ion-button routerLink="quejas" >
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+<!--
+          <ion-col class="my-3" sizeSm="6" sizeMd="4">
+            <ion-card>
+              <ion-card-header>
+                <img src="../../../assets/img/foto-fondo.png" class="w-100" height="200px" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item lines="none">
+                  <ion-label>
+                    <h1>Pedidos</h1>
+                  </ion-label>
+                  <ion-button fill="clear">
+                    <ion-icon slot="icon-only" name="arrow-forward-outline" class="bg-red p-2"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col> -->
+
+        </ion-row>
+      </ion-grid>
+
+
+    </div>
+
+
+  </div>
+
+</ion-content>
+

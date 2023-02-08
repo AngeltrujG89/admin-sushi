@@ -1,0 +1,11 @@
+
+.footer{
+    background-color: #ff9600;
+    position: fixed;
+    bottom: 0 !important;
+}
+
+ion-toolbar:root{
+    --padding: 0 !important;
+    --margin: 0 !important;
+}

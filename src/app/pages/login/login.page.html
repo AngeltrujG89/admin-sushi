@@ -1,0 +1,23 @@
+
+<ion-content>
+  <div class="container d-flex h-100">
+    <div class="d-flex m-auto">
+      <ion-card>
+        <ion-card-header class="text-center">
+        <img src="../../../assets/img/AdminApp.png" class="img-fluid" width="150px " alt="">
+        </ion-card-header>
+        <ion-card-content>
+          <form [formGroup]="loginForm">
+            <ion-input  formControlName="email"type="text" placeholder="Correo" class="border-r my-3"></ion-input>
+            <ion-input (keyup.enter)="login()"  formControlName="password" type="password" placeholder="Contraseña" class="border-r my-3"></ion-input>
+            <ion-button (click)="login()" class="border-r" expand="block" fill="clear" shape="round">
+               Iniciar Sesión
+            </ion-button>
+
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,99 @@
+<app-nav></app-nav>
+
+<ion-content>
+
+
+    <div class="container ">
+        <div class=" mt-5 h-100">
+          <h1 class="text-start pt-5">Today Orders</h1>
+          <div class="d-flex row  my-4"  >
+            <ion-button (click)="seleccionar(status.TOCONFIRM)" class="mx-auto col-md-2 my-3"  expand="block" style="color: white !important; max-width: 250px;" shape="round">
+              Pending <span class="font-bold" class="ms-3 c " style="font-weight: bolder;">{{TOCONFIRM}}</span>
+            </ion-button>
+
+            <ion-button (click)="seleccionar(status.ACCEPTED)"  class="mx-auto col-md-2 my-3"  expand="block" style="color: white !important; max-width: 250px;" shape="round">
+              Accepted <span class="badge badge-light" class="ms-3 c" style="font-weight: bolder;">{{ACCEPTED}}</span>
+            </ion-button>
+
+            <ion-button (click)="seleccionar(status.PREPARING)"  class="mx-auto col-md-2 my-3"  expand="block" style="color: white !important; max-width: 250px;" shape="round">
+              Preparing <span class="badge badge-light" class="ms-3 c" style="font-weight: bolder;">{{PREPARING}}</span>
+            </ion-button>
+
+            <ion-button (click)="seleccionar(status.READY)"  class="mx-auto col-md-2 my-3"  expand="block" style="color: white !important; max-width: 250px;" shape="round">
+              To Send <span class="badge badge-light" class="ms-3 c"style="font-weight: bolder;">{{READY}}</span>
+            </ion-button>
+
+            <ion-button (click)="seleccionar(status.ONWALK)"  class="mx-auto col-md-2 my-3"  expand="block" style="color: white !important; max-width: 250px;" shape="round">
+              Sent <span class="badge badge-light" class="ms-3 c" style="font-weight: bolder;">{{ONWALK}}</span>
+            </ion-button>
+
+            <ion-button (click)="seleccionar(status.FINISHED)" class="mx-auto col-md-2 my-3"  expand="block" style="color: white !important; max-width: 250px;" shape="round">
+              Finished  <span class="badge badge-light" class="ms-3 " style="font-weight: bolder;">{{FINISHED}}</span>
+            </ion-button>
+
+
+          </div>
+
+          <div class="container-fluid my-4 row p-0">
+            <div  *ngIf="orderSelected && orderSelected.length >0">
+              <div class="row ">
+                <ion-card class="col-md-3 m-2 " *ngFor="let item of orderSelected">
+                  <ion-card-header>
+                    <ion-card-title> To: {{item.user.names}} </ion-card-title>
+                    <p> Order #{{item.id}}</p>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <div *ngFor="let prod of item.products">
+                      <ion-item lines="none" class="ion-no-margin" *ngIf="!prod.hasSize" >
+                        <h5> - {{prod.cantidad}}x <b>{{prod.name}}</b> </h5>
+
+                      </ion-item>
+                      <h5 class="ms-3">Side: {{prod.freeSides}}</h5>
+                    </div>
+                    <ion-item lines="none" class="ion-no-margin" *ngIf="item.comentarioBranch !== '' " >
+                      <h5>Comments : {{item.comentarioBranch}}</h5>
+                    </ion-item>
+                    <ion-item lines="none" class="ion-no-margin">
+                      <h5 slot="end"> <b>{{item.ordena_recoje ? 'Delivery' : 'PickUp'}}</b>  </h5>
+                    </ion-item>
+                    <div class="mt-1 d-flex">
+                      <ion-button class="me-auto" *ngIf="item.status === status.TOCONFIRM " color="secondary" (click)="updated(status.CANCELLED ,item.id)"   shape="round">
+                        <h6 class="text-white">Cancel</h6>
+                      </ion-button>
+                      <ion-button class="ms-auto" *ngIf="item.status === status.TOCONFIRM" (click)="updated(status.ACCEPTED ,item.id)"  shape="round">
+                        <h6 class="text-white">Accept</h6>
+                      </ion-button>
+                      <ion-button class="ms-auto" *ngIf="item.status === status.ACCEPTED"  (click)="updated(status.PREPARING ,item.id)"  shape="round">
+                        <h6 class="text-white">Prepare</h6>
+                      </ion-button>
+                      <ion-button class="ms-auto" *ngIf="item.status === status.PREPARING"  (click)="updated(status.READY ,item.id)"  shape="round">
+                        <h6  class="text-white">Ready</h6>
+
+                      </ion-button>
+
+                      <h6 class="ms-auto" *ngIf="item.ordena_recoje && item.status === status.READY">
+                        Wait for the delivery to arrive for the order
+                      </h6>
+                      <ion-button class="ms-auto" *ngIf="item.status === status.READY && item.ordena_recoje"  (click)="updated(status.FINISHED ,item.id)"  shape="round">
+                        <h6  class="text-white">Finished</h6>
+
+                      </ion-button>
+
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+</ion-content>

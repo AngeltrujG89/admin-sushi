@@ -1,0 +1,65 @@
+<div class="container-fluid row mt-5 mx-auto" >
+  <div class="col-md-6" style="border-right: 1px solid #eb4a44;">
+    <h3>Create Category</h3>
+
+
+      <ion-list lines="none">
+        <ion-item>
+         <ion-input [(ngModel)]="name" type="text" placeholder="Category name" class="bg-white"></ion-input>
+        </ion-item>
+        <div class="text-center mt-5">
+          <ion-button (click)="save()" [disabled]="name.length===0" style="color:white!important" expand="block" shape="round">
+          Save
+          </ion-button>
+        </div>
+      </ion-list>
+
+
+  </div>
+  <div class="col-md-6">
+    <h3>Categories</h3>
+    <div id="Layer1" style="width:100%; height:415px; overflow: scroll;">
+      <ion-searchbar [(ngModel)]="search"   *ngIf="Categorias.length>0"animated placeholder="Search" inputmode="decimal" type="decimal" [debounce]="300" ></ion-searchbar>
+      <h4 class="my-3" *ngIf="Categorias.length==0" >Create categories for your products</h4>
+      <ion-list  >
+        <ion-item lines="none" *ngFor="let item of Categorias | filterSearch:search ">
+          <ion-label> {{item.name}} </ion-label>
+          <ion-button slot="end" color="secondary" class="mx-1" (click)="editModal=!editModal; idselected=item.id; editName=item.name">
+            <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" class="mx-1" (click)="delete(item.id)">
+            <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
+          </ion-button>
+
+        </ion-item>
+      </ion-list>
+      </div>
+
+  </div>
+</div>
+
+<ion-modal [isOpen]="editModal">
+  <ng-template>
+    <ion-toolbar class="back">
+      <ion-button (click)="editModal=!editModal" class="ms-3">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+
+   <ion-content class="container d-flex" fullscreen="true">
+
+      <ion-list lines="none" class="my-auto">
+        <ion-item>
+         <ion-input [(ngModel)]="editName" type="text" placeholder="Category name" class="bg-white"></ion-input>
+        </ion-item>
+        <div class="text-center mt-5">
+          <ion-button   (click)="edit()" style="color:white!important" shape="round">
+          Save
+          </ion-button>
+        </div>
+      </ion-list>
+
+   </ion-content>
+
+  </ng-template>
+</ion-modal>

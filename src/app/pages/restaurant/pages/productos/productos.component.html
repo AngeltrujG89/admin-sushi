@@ -1,0 +1,348 @@
+    <div class="container-fluid row  mx-auto mt-5" >
+            <div class="col-md-5"  style="border-right: 1px solid rgb(178, 178, 178);">
+              <h3>Create Product</h3>
+
+              <form [formGroup]="productForm" >
+
+                <ion-list lines="none">
+                  <ion-item>
+                    <ion-input formControlName="name" type="text" placeholder="Product name" class="bg-white my-2"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="description" type="text" placeholder="Description" class="bg-white my-2"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="price" type="number" placeholder="Price" class="bg-white my-2"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="freeSides" type="number" placeholder="Free Sides" class="bg-white my-2"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Category</ion-label>
+                      <ion-select formControlName="category"  placeholder="select">
+                        <ion-select-option [value]="item.id" *ngFor="let item of Categorias">{{item.name}}</ion-select-option>
+                      </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Branch</ion-label>
+                      <ion-select formControlName="branch" multiple="true"  placeholder="select">
+                        <ion-select-option [value]="item.id" *ngFor="let item of Branchs">{{item.name}}</ion-select-option>
+
+                      </ion-select>
+                  </ion-item>
+                  <ion-item *ngIf="Adicionales.length>0">
+                    <ion-label>Additionals</ion-label>
+                      <ion-select formControlName="adicionales" multiple="true"  placeholder="select">
+                        <div *ngFor="let item of Adicionales">
+                          <ion-select-option *ngIf="item.active" [value]="item.id" >{{item.name}}</ion-select-option>
+
+                        </div>
+
+                      </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Tags</ion-label>
+                    <ion-select formControlName="tags" multiple="true" placeholder="Select Tags">
+                      <ion-select-option [value]="tags.NEW">{{tags.NEW}}</ion-select-option>
+                      <ion-select-option [value]="tags.POPULAR">{{tags.POPULAR}}</ion-select-option>
+                      <ion-select-option [value]="tags.PROMOTION">{{tags.PROMOTION}}</ion-select-option>
+                      <ion-select-option [value]="tags.RECOMMENDED">{{tags.RECOMMENDED}}</ion-select-option>
+                      <ion-select-option [value]="tags.VEGAN">{{tags.VEGAN}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-button (click)="image()" class="ion-margin"  color="secondary" expand="block" shape="round">
+                    {{imagen ?'Upload another image':'Upload Image'}}
+                     </ion-button>
+                  <div class="text-center mt-5">
+                    <ion-button  (click)="save()" [disabled]="!productForm.valid" style="color:white!important" expand="block" shape="round">
+                    Save
+                    </ion-button>
+                  </div>
+                </ion-list>
+
+              </form>
+            </div>
+            <div class="col-md-7" >
+              <h3>Products</h3>
+              <ion-searchbar *ngIf="Productos.length>0" [(ngModel)]="search" placeholder="Search"  [debounce]="250" ></ion-searchbar>
+              <h4 class="my-3"  *ngIf="Productos.length==0">Create products for your categories</h4>
+              <div id="Layer1" style="width:100%; height:615px; overflow: scroll;">
+
+                <ion-list *ngIf="Productos.length>0">
+                  <ion-item lines="none" *ngFor="let item of Productos | filterSearch:search" class="my-2">
+                    <ion-toggle  [checked]="item.active" (ionChange)="changeStatus(item)" class="border-r me-3" color="primary"></ion-toggle>
+                    <ion-img class="me-4" style="width: 70px; height: 70px;" [src]="Uri+item.image"></ion-img>
+                    <ion-label> {{item.name}}  </ion-label>
+
+                    <ion-button slot="end" color="secondary" class="mx-1" (click)="editProduct=!editProduct; asignForm(item);productselected=item">
+                      <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
+                    </ion-button>
+                   <!--  <ion-button slot="end" color="secondary" class="mx-1" (click)="days=!days; asignarDias(item.id,item.dias)">
+                      <ion-icon slot="icon-only" name="calendar-outline" style="color: white !important;"></ion-icon>
+                    </ion-button> -->
+                    <ion-button slot="end"  sclass="mx-1" (click)="delete(item.id)">
+                      <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
+                    </ion-button>
+
+
+                  </ion-item>
+                </ion-list>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+          <ion-modal [backdropDismiss]="false" [isOpen]="days">
+            <ng-template>
+              <ion-toolbar class="back fixed-top ">
+
+                <ion-button  (click)="days=!days; resetDias();" class="ms-3">
+                  <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
+                </ion-button>
+              </ion-toolbar>
+
+              <ion-content>
+                <br>
+                <br>
+                <br>
+              <ion-text class="text-center">
+                <h3 *ngIf="editarDias">Edit Product Schedule </h3>
+                <h3 *ngIf="!editarDias">Create Product Schedule</h3>
+              </ion-text>
+
+              <ion-item>
+                <ion-label class="me-5">Day</ion-label>
+                <ion-label class="ms-5" style="    margin-left: 130px!important;">Open</ion-label>
+                <ion-label>Close</ion-label>
+                <ion-label class="ms-5">Active</ion-label>
+              </ion-item>
+              <ion-list>
+                  <ion-item *ngFor="let item of dias">
+                    <ion-label slot="start" style="width: 30px;" >{{item.name}}</ion-label>
+                      <ion-select (ionChange)=" assign(item.name,$event,'OPEN')" class="me-5" [value]="item.open" placeholder="Open">
+                        <ion-select-option value="0:00">0:00</ion-select-option>
+                        <ion-select-option value="1:00">1:00</ion-select-option>
+                        <ion-select-option value="2:00">2:00</ion-select-option>
+                        <ion-select-option value="3:00">3:00</ion-select-option>
+                        <ion-select-option value="4:00">4:00</ion-select-option>
+                        <ion-select-option value="5:00">5:00</ion-select-option>
+                        <ion-select-option value="6:00">6:00</ion-select-option>
+                        <ion-select-option value="7:00">7:00</ion-select-option>
+                        <ion-select-option value="8:00">8:00</ion-select-option>
+                        <ion-select-option value="9:00">9:00</ion-select-option>
+                        <ion-select-option value="10:00">10:00</ion-select-option>
+                        <ion-select-option value="11:00">11:00</ion-select-option>
+                        <ion-select-option value="12:00">12:00</ion-select-option>
+                        <ion-select-option value="13:00">13:00</ion-select-option>
+                        <ion-select-option value="14:00">14:00</ion-select-option>
+                        <ion-select-option value="15:00">15:00</ion-select-option>
+                        <ion-select-option value="16:00">16:00</ion-select-option>
+                        <ion-select-option value="17:00">17:00</ion-select-option>
+                        <ion-select-option value="18:00">18:00</ion-select-option>
+                        <ion-select-option value="19:00">19:00</ion-select-option>
+                        <ion-select-option value="20:00">20:00</ion-select-option>
+                        <ion-select-option value="21:00">21:00</ion-select-option>
+                        <ion-select-option value="22:00">22:00</ion-select-option>
+                        <ion-select-option value="23:00">23:00</ion-select-option>
+                      </ion-select>
+
+                      <ion-select (ionChange)=" assign(item.name,$event,'CLOSE')"  [value]="item.close" placeholder="Open">
+                        <ion-select-option value="0:00">0:00</ion-select-option>
+                        <ion-select-option value="1:00">1:00</ion-select-option>
+                        <ion-select-option value="2:00">2:00</ion-select-option>
+                        <ion-select-option value="3:00">3:00</ion-select-option>
+                        <ion-select-option value="4:00">4:00</ion-select-option>
+                        <ion-select-option value="5:00">5:00</ion-select-option>
+                        <ion-select-option value="6:00">6:00</ion-select-option>
+                        <ion-select-option value="7:00">7:00</ion-select-option>
+                        <ion-select-option value="8:00">8:00</ion-select-option>
+                        <ion-select-option value="9:00">9:00</ion-select-option>
+                        <ion-select-option value="10:00">10:00</ion-select-option>
+                        <ion-select-option value="11:00">11:00</ion-select-option>
+                        <ion-select-option value="12:00">12:00</ion-select-option>
+                        <ion-select-option value="13:00">13:00</ion-select-option>
+                        <ion-select-option value="14:00">14:00</ion-select-option>
+                        <ion-select-option value="15:00">15:00</ion-select-option>
+                        <ion-select-option value="16:00">16:00</ion-select-option>
+                        <ion-select-option value="17:00">17:00</ion-select-option>
+                        <ion-select-option value="18:00">18:00</ion-select-option>
+                        <ion-select-option value="19:00">19:00</ion-select-option>
+                        <ion-select-option value="20:00">20:00</ion-select-option>
+                        <ion-select-option value="21:00">21:00</ion-select-option>
+                        <ion-select-option value="22:00">22:00</ion-select-option>
+                        <ion-select-option value="23:00">23:00</ion-select-option>
+                      </ion-select>
+                      <ion-toggle [(ngModel)]="item.active" slot="end" color="primary"></ion-toggle>
+                  </ion-item>
+
+              </ion-list>
+
+              <div class="d-flex">
+                <ion-button *ngIf="editarDias"(click)="days=!days;" shape="round"  class=" ion-padding-horizontal mx-auto ">
+                  <ion-label class="text-white px-5">Updates</ion-label>
+                </ion-button>
+
+                <ion-button *ngIf="!editarDias" (click)="days=!days" shape="round"  class=" ion-padding-horizontal mx-auto ">
+                  <ion-label class="text-white px-5">Save</ion-label>
+                </ion-button>
+              </div>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
+<ion-modal [backdropDismiss]="false" [isOpen]="editProduct"  style="width:100%; height:100%;">
+<ng-template style="width:100%; height:215px; overflow: scroll;">
+  <ion-toolbar class="back">
+<div class="row">
+    <ion-segment [value]="select">
+      <ion-segment-button  (click)="select='default' " value="default">
+        <ion-label>Product</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="select='segment' " value="segment">
+        <ion-label>Options</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="editProduct=!editProduct; imagenEdit=null; productselected=null" >
+        <ion-label>Exit</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+</div>
+  </ion-toolbar>
+
+
+  <ion-content *ngIf="select==='default'">
+    <form [formGroup]="productFormEdit" >
+
+      <ion-list lines="none">
+        <ion-item>
+          <ion-input formControlName="name" type="text" placeholder="Product name" class="bg-white my-2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="description" type="text" placeholder="Description" class="bg-white my-2"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input formControlName="price" type="number" placeholder="Price" class="bg-white my-2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="freeSides" type="number" placeholder="Free Sides" class="bg-white my-2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Category</ion-label>
+            <ion-select formControlName="category"  placeholder="Select">
+              <ion-select-option [value]="item.id" *ngFor="let item of Categorias">{{item.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Branch</ion-label>
+            <ion-select formControlName="branch" multiple="true"  placeholder="select">
+              <ion-select-option [value]="item.id" *ngFor="let item of Branchs">{{item.name}}</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Additionals</ion-label>
+            <ion-select formControlName="adicionales" multiple="true"  placeholder="select">
+              <ion-select-option [value]="item.id" *ngFor="let item of Adicionales">{{item.name}}</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tags</ion-label>
+          <ion-select formControlName="tags" multiple="true" placeholder="Select Tags">
+            <ion-select-option [value]="tags.NEW">{{tags.NEW}}</ion-select-option>
+            <ion-select-option [value]="tags.POPULAR">{{tags.POPULAR}}</ion-select-option>
+            <ion-select-option [value]="tags.PROMOTION">{{tags.PROMOTION}}</ion-select-option>
+            <ion-select-option [value]="tags.RECOMMENDED">{{tags.RECOMMENDED}}</ion-select-option>
+            <ion-select-option [value]="tags.VEGAN">{{tags.VEGAN}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button  class="ion-margin"  (click)="image(true)" color="secondary" expand="block" shape="round">
+          {{imagenEdit ?'Load another image':'Upload Image'}}
+           </ion-button>
+
+        <div class="text-center mt-5 d-flex">
+          <ion-button (click)="update()" style="color:white!important" class="mx-auto" shape="round">
+          Save
+          </ion-button>
+        </div>
+      </ion-list>
+
+    </form>
+  </ion-content>
+  <ion-content *ngIf="select==='segment'">
+
+      <ion-list *ngIf="productselected.variations.length > 0">
+
+        <ion-item lines="none" *ngFor="let item of productselected.variations">
+          <ion-img slot="start"class="me-4" style="width: 70px; height: 70px;" [src]="Uri+item.image"></ion-img>
+          <ion-label >{{item.name}}</ion-label>
+          <ion-label >{{item.price | currency}}</ion-label>
+          <ion-button slot="end" >
+            <ion-icon class="text-white" slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" color="secondary" class="mx-2">
+            <ion-icon class="text-white" slot="icon-only" name="create-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+      <div class="d-flex">
+        <ion-button (click)="editOption=!editOption; " class=" text-white mt-3 mx-auto" shape="round">
+         Add Option
+         </ion-button>
+      </div>
+  </ion-content>
+
+
+</ng-template>
+
+</ion-modal>
+
+<ion-modal [backdropDismiss]="true" [isOpen]="editOption"  style="width:100%; height:100%;">
+  <ng-template style="width:100%; height:215px; overflow: scroll;">
+    <ion-toolbar class="back">
+
+    </ion-toolbar>
+
+
+    <ion-content >
+      <form [formGroup]="Variation" >
+
+        <ion-list lines="none">
+          <ion-item>
+            <ion-input formControlName="name" type="text" placeholder="Product name" class="bg-white my-2"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="price" type="number" placeholder="Price" class="bg-white my-2"></ion-input>
+          </ion-item>
+
+          <ion-button  class="ion-margin"  (click)="image(false,true)" color="secondary" expand="block" shape="round">
+            {{imageVariation ?'Load another image':'Upload Image'}}
+             </ion-button>
+
+          <div class="text-center mt-5 d-flex">
+            <ion-button (click)="saveVariation()" style="color:white!important" class="mx-auto" shape="round">
+            Save
+            </ion-button>
+          </div>
+        </ion-list>
+
+      </form>
+    </ion-content>
+
+
+
+  </ng-template>
+
+  </ion-modal>
+
+
+
+
+
+
+

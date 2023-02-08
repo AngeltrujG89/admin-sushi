@@ -1,0 +1,41 @@
+
+  <ion-content [fullscreen]="true">
+   
+  <div id="mapa"class="d-flex" (click)="select(); ">
+    <ion-fab class="ms-3 mt-3">
+      <ion-fab-button (click)="dismiss(false)">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab class="mt-2" slot="fixed" vertical="top" horizontal="end"  >
+      <ion-fab-button (click)="modal=!modal">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+  </div>
+  </ion-content>
+
+  <ion-modal [isOpen]="modal" >
+    <ng-template class="fondo">
+      <ion-fab class="ms-3 mt-3">
+        <ion-fab-button (click)="modal=!modal">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-content class="ion-padding">
+      <br><br><br>
+        <ion-item class="my-3">
+          <ion-label position="floating">Address <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required  [(ngModel)]="direccion.address" type="text"></ion-input>
+        </ion-item>
+
+        <ion-button class="mx-auto" (click)="save()" expand="block" [disabled]="!direccion.address" shape="round">
+          Save
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>

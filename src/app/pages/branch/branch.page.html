@@ -1,0 +1,222 @@
+<app-nav></app-nav>
+
+
+<ion-content>
+  <div class="container-fluid ">
+    <div class="container mt-5 h-100">
+      <h1 class="text-start pt-5">Branchs</h1>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="d-flex my-3">
+          <ion-button  class="mx-auto text-white" (click)=" days=!days" expand="block" shape="round">
+            Create New Branch
+          </ion-button>
+        </div>
+
+        <div class="col-md-12">
+          <h2> Branchs</h2>
+          <h4 class="my-3"  *ngIf="branchs.length==0">Create branches to manage</h4>
+          <div id="Layer1" style="width:100%; height:615px; overflow: scroll;">
+            <ion-list *ngIf="branchs.length>0">
+              <div  button lines="none" *ngFor="let item of branchs" class="my-2">
+
+                 <ion-item *ngIf="item?.active">
+                  <ion-label ><img style="width: 100px;" [src]="item.image? Uri+item.image : Uri+'sin_imagen.jpg'"></ion-label>
+                  <ion-label > {{item.name}}  </ion-label>
+                  <ion-button slot="end" (click)="deleteBranch(item.id.toString())"  class="mx-1">
+                    <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
+                  </ion-button>
+                  <ion-button slot="end" (click)="updateBranch(item);data=true;individual=true" color="secondary"  class="mx-1">
+                    <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
+                  </ion-button>
+                  <ion-button slot="end"  (click)=" direccion={id:item.address.id,address:item.address.address,latitud:item.address.latitud,longitud:item.address.longitud};branch=item.id;preparedMapa(true); " color="secondary"  class="mx-1">
+                    <ion-icon slot="icon-only" name="pin-outline" style="color: white !important;"></ion-icon>
+                  </ion-button>
+                 <ion-button slot="end"  (click)="dias=item.dias; days=!days;individual=true; id=item.id" color="secondary"  class="mx-1">
+                    <ion-icon slot="icon-only" name="calendar-outline" style="color: white !important;"></ion-icon>
+                  </ion-button>
+                 </ion-item>
+                </div>
+
+            </ion-list>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</ion-content>
+
+
+
+
+
+
+<ion-modal [backdropDismiss]="false" [isOpen]="days">
+  <ng-template>
+    <ion-toolbar class="back fixed-top ">
+      <ion-button *ngIf="!individual" (click)="days=!days; ; individual=false" class="ms-3">
+        <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button *ngIf="individual" (click)="days=!days; resetDias();" class="ms-3">
+        <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+
+    <ion-content>
+      <br>
+      <br>
+      <br>
+    <ion-text class="text-center">
+      <h3>Shipping Schedule</h3>
+    </ion-text>
+
+    <ion-item>
+      <ion-label class="me-5">Day</ion-label>
+      <ion-label class="ms-5" style="    margin-left: 130px!important;">Open</ion-label>
+      <ion-label>Close</ion-label>
+      <ion-label class="ms-5">Active</ion-label>
+    </ion-item>
+    <ion-list>
+        <ion-item *ngFor="let item of dias">
+          <ion-label slot="start" style="width: 30px;" >{{item.name}}</ion-label>
+            <ion-select (ionChange)=" assign(item.name,$event,'OPEN')" class="me-5" [value]="item.open" placeholder="Open">
+              <ion-select-option value="0:00">0:00</ion-select-option>
+              <ion-select-option value="1:00">1:00</ion-select-option>
+              <ion-select-option value="2:00">2:00</ion-select-option>
+              <ion-select-option value="3:00">3:00</ion-select-option>
+              <ion-select-option value="4:00">4:00</ion-select-option>
+              <ion-select-option value="5:00">5:00</ion-select-option>
+              <ion-select-option value="6:00">6:00</ion-select-option>
+              <ion-select-option value="7:00">7:00</ion-select-option>
+              <ion-select-option value="8:00">8:00</ion-select-option>
+              <ion-select-option value="9:00">9:00</ion-select-option>
+              <ion-select-option value="10:00">10:00</ion-select-option>
+              <ion-select-option value="11:00">11:00</ion-select-option>
+              <ion-select-option value="12:00">12:00</ion-select-option>
+              <ion-select-option value="13:00">13:00</ion-select-option>
+              <ion-select-option value="14:00">14:00</ion-select-option>
+              <ion-select-option value="15:00">15:00</ion-select-option>
+              <ion-select-option value="16:00">16:00</ion-select-option>
+              <ion-select-option value="17:00">17:00</ion-select-option>
+              <ion-select-option value="18:00">18:00</ion-select-option>
+              <ion-select-option value="19:00">19:00</ion-select-option>
+              <ion-select-option value="20:00">20:00</ion-select-option>
+              <ion-select-option value="21:00">21:00</ion-select-option>
+              <ion-select-option value="22:00">22:00</ion-select-option>
+              <ion-select-option value="23:00">23:00</ion-select-option>
+            </ion-select>
+
+            <ion-select (ionChange)=" assign(item.name,$event,'CLOSE')"  [value]="item.close" placeholder="Open">
+              <ion-select-option value="0:00">0:00</ion-select-option>
+              <ion-select-option value="1:00">1:00</ion-select-option>
+              <ion-select-option value="2:00">2:00</ion-select-option>
+              <ion-select-option value="3:00">3:00</ion-select-option>
+              <ion-select-option value="4:00">4:00</ion-select-option>
+              <ion-select-option value="5:00">5:00</ion-select-option>
+              <ion-select-option value="6:00">6:00</ion-select-option>
+              <ion-select-option value="7:00">7:00</ion-select-option>
+              <ion-select-option value="8:00">8:00</ion-select-option>
+              <ion-select-option value="9:00">9:00</ion-select-option>
+              <ion-select-option value="10:00">10:00</ion-select-option>
+              <ion-select-option value="11:00">11:00</ion-select-option>
+              <ion-select-option value="12:00">12:00</ion-select-option>
+              <ion-select-option value="13:00">13:00</ion-select-option>
+              <ion-select-option value="14:00">14:00</ion-select-option>
+              <ion-select-option value="15:00">15:00</ion-select-option>
+              <ion-select-option value="16:00">16:00</ion-select-option>
+              <ion-select-option value="17:00">17:00</ion-select-option>
+              <ion-select-option value="18:00">18:00</ion-select-option>
+              <ion-select-option value="19:00">19:00</ion-select-option>
+              <ion-select-option value="20:00">20:00</ion-select-option>
+              <ion-select-option value="21:00">21:00</ion-select-option>
+              <ion-select-option value="22:00">22:00</ion-select-option>
+              <ion-select-option value="23:00">23:00</ion-select-option>
+            </ion-select>
+            <ion-toggle [(ngModel)]="item.active" slot="end" color="primary"></ion-toggle>
+        </ion-item>
+
+    </ion-list>
+      <ion-button (click)="days=!days;data=!data" *ngIf="!individual"  class="fixed-bottom mb-1 ">
+        <ion-label class="text-white p-1">Next</ion-label>
+      </ion-button>
+      <ion-button (click)="days=!days;updateSchedule(); " *ngIf="individual" class="fixed-bottom mb-1 ">
+        <ion-label class="text-white p-1">Save</ion-label>
+      </ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+
+<ion-modal [backdropDismiss]="false" [isOpen]="data">
+  <ng-template>
+    <ion-toolbar class="back fixed-top ">
+      <ion-button *ngIf="!individual" (click)="data=!data; days=!days ; ; individual=false" class="ms-3">
+        <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="individual" (click)="data=!data; resetDias() ; individual=false" class="ms-3">
+        <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+
+    <ion-content>
+      <br>
+      <br>
+      <br>
+    <ion-text class="text-center mt-5">
+      <h3>Complete the form</h3>
+    </ion-text>
+  <form [formGroup]="branchForm" >
+
+            <ion-list lines="none">
+              <ion-item>
+                <ion-input formControlName="name" type="text" placeholder="Branch's name" class="bg-white my-2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="phone" type="text" placeholder="Phone" class="bg-white my-2"></ion-input>
+              </ion-item>
+               <ion-item>
+                <ion-input formControlName="shippingCost" type="number" placeholder="Shipping cost per kilometer" class="bg-white my-2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="rate" type="number" placeholder="Service ratio (in Km)" class="bg-white my-2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Delivery Type</ion-label>
+                <ion-select formControlName="deliveryType" placeholder="Select">
+
+                  <ion-select-option value="DELIVERY">Delivery</ion-select-option>
+                  <ion-select-option value="PICKUP">Pick up</ion-select-option>
+                  <ion-select-option value="ALL">Both of them</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>Método de pago</ion-label>
+                <ion-select formControlName="paymentMethod" placeholder="Select">
+                  <ion-select-option value="CASH">Cash</ion-select-option>
+                  <ion-select-option value="CARD">Card</ion-select-option>
+                  <ion-select-option value="ALL">Both of them</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+                <ion-button   (click)="camera()" color="secondary" expand="block" shape="round">
+                 {{imagen ?'Upload another image':'Upload Image'}}
+                  </ion-button>
+            </ion-list>
+
+          </form>
+
+      <ion-button *ngIf="!individual" (click)="createBranch() " [disabled]="!branchForm.valid "  class="fixed-bottom mb-1 ">
+        <ion-label class="text-white p-1">Next</ion-label>
+      </ion-button>
+      <ion-button *ngIf="individual"  (click)="editBranch() "  class="fixed-bottom mb-1 ">
+        <ion-label class="text-white p-1">Save</ion-label>
+      </ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
