@@ -3,9 +3,22 @@
     background-color: #ff9600;
     position: fixed;
     bottom: 0 !important;
+    padding-top: 0;
 }
 
 ion-toolbar:root{
     --padding: 0 !important;
     --margin: 0 !important;
+}
+
+.btn-home{
+    background: #d6e601;
+}
+
+.btn-logout{
+    background: #eb4a44;
+}
+
+.icon{
+    color: white !important;
 }

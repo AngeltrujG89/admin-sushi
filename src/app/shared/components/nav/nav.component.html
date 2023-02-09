@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar class="back">
-    <ion-button *ngIf="user?.role !=='COLABORADOR'" routerLink="/dashboard" class="bgRed"  class="ms-3">
+    <ion-button *ngIf="user?.role !=='COLABORADOR'" routerLink="/dashboard" class="bgRed"  class="ms-3" style="--background: #d6e601;">
       <ion-icon slot="icon-only"  color="sd" name="arrow-back-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>

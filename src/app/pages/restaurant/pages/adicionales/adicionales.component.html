@@ -1,32 +1,32 @@
 <div class="container-fluid row mx-auto mt-5" >
   <div class="col-md-6"  style="border-right: 1px solid rgb(178, 178, 178);">
     <h3>
-      Create Additionals</h3>
+      Crear Adicionales</h3>
       <ion-list lines="none">
         <ion-item class="ion-margin">
-         <ion-input [(ngModel)]="name" type="text" placeholder="Name" class="bg-white"></ion-input>
+         <ion-input [(ngModel)]="name" type="text" placeholder="Nombre" class="bg-white"></ion-input>
         </ion-item>
 
         <ion-item class="ion-margin">
-          <ion-input [(ngModel)]="price" type="number" placeholder="Price" class="bg-white"></ion-input>
+          <ion-input [(ngModel)]="price" type="number" placeholder="Precio" class="bg-white"></ion-input>
          </ion-item>
 
          <ion-item>
-          <ion-label>Can Free?</ion-label>
+          <ion-label>¿Gratis?</ion-label>
           <ion-toggle  slot="start" [(ngModel)]="canFree"  [checked]="canFree" class="border-r me-3" color="primary"> </ion-toggle>
          </ion-item>
 
         <div class="text-center mt-5">
-          <ion-button (click)="create()" [disabled]="name===null || price===null" style="color:white!important" expand="block" shape="round">
-          Save
+          <ion-button (click)="create()" color="danger" [disabled]="name===null || price===null" style="color:white!important" expand="block" shape="round">
+          Guardar
           </ion-button>
         </div>
       </ion-list>
   </div>
   <div class="col-md-6">
-    <h3>Additional</h3>
+    <h3>Adicionales</h3>
      <h4 class="my-3"  *ngIf="Adicional.length==0">
-      Create Add-ons for your products</h4>
+      Crear add-ons para tus productos</h4>
       <ion-searchbar [(ngModel)]="search" placeholder="Search"  type="text" [debounce]="250" ></ion-searchbar>
      <div id="Layer1" style="width:100%; height:415px; overflow: scroll;">
       <ion-list *ngIf="Adicional.length>0">
@@ -36,7 +36,7 @@
           <ion-button (click)="editAdd=!editAdd; assignEdit(item)" slot="end" color="secondary" class="mx-1">
             <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
           </ion-button>
-          <ion-button slot="end" class="mx-1" (click)="delete(item.id)">
+          <ion-button slot="end" class="mx-1" (click)="delete(item.id)" color="danger">
             <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
           </ion-button>
         </ion-item>
@@ -49,14 +49,14 @@
 
 <ion-modal [isOpen]="editAdd">
   <ng-template heigth="100%">
-   <ion-toolbar class="back fixed-top ">
+   <ion-toolbar class="back fixed-top " style="background-color: black;">
      <ion-button (click)="editAdd=!editAdd; productsEdit=[]" class="ms-3">
        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
      </ion-button>
    </ion-toolbar>
-   <ion-content class="container mt-5"> <br>
+   <ion-content class="container mt-5" class="background-modal"> <br>
      <br><br><br>
-     <h4 class="text-center">Edit Additional</h4>
+     <h4 class="text-center">Editar Adicional</h4>
        <ion-list lines="none">
          <ion-item class="ion-margin">
           <ion-input [(ngModel)]="nameEdit"  type="text" placeholder="Name" class="bg-white"></ion-input>
@@ -67,12 +67,12 @@
           </ion-item>
 
           <ion-item>
-            <ion-label>Can Free?</ion-label>
+            <ion-label>¿Gratis?</ion-label>
             <ion-toggle  slot="start" [(ngModel)]="canFreeEdit"  [checked]="canFreeEdit" class="border-r me-3" color="primary"> </ion-toggle>
            </ion-item>
          <div class="text-center mt-5 container">
-           <ion-button (click)="edit()" style="color:white!important"  shape="round">
-           Save
+           <ion-button (click)="edit()" style="color:white!important"  shape="round" color="danger">
+           Guardar
            </ion-button>
          </div>
        </ion-list>

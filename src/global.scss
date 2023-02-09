@@ -35,10 +35,21 @@
 }
 
 
-.background-app{
+.background-login{
     background-image: url("assets/img/fondo-app.jpg");
     background-size: contain;
 }
+
+.background-app{
+    background-image: url("assets/img/fondo-app.jpg");
+    background-size: cover;
+}
+
+.background-modal{
+    background-image: url("assets/img/fondo-app.jpg");
+    background-size: cover;
+}
+
 
 
 /* width */
@@ -130,6 +141,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.btn-options{
+    background-color: #d6e601;
+}
+
 
 ion-list{
     --background: transparent !important;
@@ -1061,7 +1077,7 @@ ion-icon{
 
 
 .border-r{
-    border: 1px solid #eb4a44;
+    border: 1px solid #ff9600;
     border-radius: 30px;
 }
 
@@ -1072,8 +1088,15 @@ ion-icon{
     transition: 300ms;
 }
 
+.bg-green{
+    background-color: #d6e601!important;
+    color: white!important;
+    border-radius: 30px;
+    transition: 300ms;
+}
+
 .bg-white{
-    border:1px solid #eb4a44;
+    border:1px solid #ff9600;
     color: black!important;
     border-radius: 30px;
     transition: 300ms;

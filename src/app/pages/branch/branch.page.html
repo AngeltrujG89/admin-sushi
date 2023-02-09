@@ -4,19 +4,19 @@
 <ion-content>
   <div class="container-fluid ">
     <div class="container mt-5 h-100">
-      <h1 class="text-start pt-5">Branchs</h1>
+      <h1 class="text-start pt-5">Sucursales</h1>
 
     <div class="container mt-5">
       <div class="row">
         <div class="d-flex my-3">
           <ion-button  class="mx-auto text-white" (click)=" days=!days" expand="block" shape="round">
-            Create New Branch
+            Crear Nueva Sucursal
           </ion-button>
         </div>
 
         <div class="col-md-12">
-          <h2> Branchs</h2>
-          <h4 class="my-3"  *ngIf="branchs.length==0">Create branches to manage</h4>
+          <h2> Sucursales</h2>
+          <h4 class="my-3"  *ngIf="branchs.length==0">Crear Sucursales para Administrar</h4>
           <div id="Layer1" style="width:100%; height:615px; overflow: scroll;">
             <ion-list *ngIf="branchs.length>0">
               <div  button lines="none" *ngFor="let item of branchs" class="my-2">
@@ -24,7 +24,7 @@
                  <ion-item *ngIf="item?.active">
                   <ion-label ><img style="width: 100px;" [src]="item.image? Uri+item.image : Uri+'sin_imagen.jpg'"></ion-label>
                   <ion-label > {{item.name}}  </ion-label>
-                  <ion-button slot="end" (click)="deleteBranch(item.id.toString())"  class="mx-1">
+                  <ion-button slot="end" (click)="deleteBranch(item.id.toString())"  class="mx-1" color="danger">
                     <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
                   </ion-button>
                   <ion-button slot="end" (click)="updateBranch(item);data=true;individual=true" color="secondary"  class="mx-1">
@@ -57,29 +57,29 @@
 
 <ion-modal [backdropDismiss]="false" [isOpen]="days">
   <ng-template>
-    <ion-toolbar class="back fixed-top ">
-      <ion-button *ngIf="!individual" (click)="days=!days; ; individual=false" class="ms-3">
+    <ion-toolbar class="back fixed-top " style="background-color: black;">
+      <ion-button *ngIf="!individual" (click)="days=!days; ; individual=false" class="ms-3" style="--background: #d6e601;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
 
-      <ion-button *ngIf="individual" (click)="days=!days; resetDias();" class="ms-3">
+      <ion-button *ngIf="individual" (click)="days=!days; resetDias();" class="ms-3" style="--background: #d6e601;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-toolbar>
 
-    <ion-content>
+    <ion-content class="background-modal">
       <br>
       <br>
       <br>
     <ion-text class="text-center">
-      <h3>Shipping Schedule</h3>
+      <h3>Itinerario de envío</h3>
     </ion-text>
 
     <ion-item>
-      <ion-label class="me-5">Day</ion-label>
-      <ion-label class="ms-5" style="    margin-left: 130px!important;">Open</ion-label>
-      <ion-label>Close</ion-label>
-      <ion-label class="ms-5">Active</ion-label>
+      <ion-label class="me-5">Día</ion-label>
+      <ion-label class="ms-5" style="    margin-left: 130px!important;">Apertura</ion-label>
+      <ion-label>Cierre</ion-label>
+      <ion-label class="ms-5">Activo</ion-label>
     </ion-item>
     <ion-list>
         <ion-item *ngFor="let item of dias">
@@ -142,10 +142,10 @@
 
     </ion-list>
       <ion-button (click)="days=!days;data=!data" *ngIf="!individual"  class="fixed-bottom mb-1 ">
-        <ion-label class="text-white p-1">Next</ion-label>
+        <ion-label class="text-white p-1">Siguiente</ion-label>
       </ion-button>
       <ion-button (click)="days=!days;updateSchedule(); " *ngIf="individual" class="fixed-bottom mb-1 ">
-        <ion-label class="text-white p-1">Save</ion-label>
+        <ion-label class="text-white p-1">Guardar</ion-label>
       </ion-button>
     </ion-content>
   </ng-template>
@@ -155,21 +155,21 @@
 
 <ion-modal [backdropDismiss]="false" [isOpen]="data">
   <ng-template>
-    <ion-toolbar class="back fixed-top ">
-      <ion-button *ngIf="!individual" (click)="data=!data; days=!days ; ; individual=false" class="ms-3">
+    <ion-toolbar class="back fixed-top " style="background-color: black;">
+      <ion-button *ngIf="!individual" (click)="data=!data; days=!days ; ; individual=false" class="ms-3" style="--background: #d6e601;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
-      <ion-button *ngIf="individual" (click)="data=!data; resetDias() ; individual=false" class="ms-3">
+      <ion-button *ngIf="individual" (click)="data=!data; resetDias() ; individual=false" class="ms-3" style="--background: #d6e601;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-toolbar>
 
-    <ion-content>
+    <ion-content class="background-modal">
       <br>
       <br>
       <br>
     <ion-text class="text-center mt-5">
-      <h3>Complete the form</h3>
+      <h3>Completa el formulario</h3>
     </ion-text>
   <form [formGroup]="branchForm" >
 
@@ -187,36 +187,39 @@
                 <ion-input formControlName="rate" type="number" placeholder="Service ratio (in Km)" class="bg-white my-2"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label>Delivery Type</ion-label>
+                <ion-label>Tipo de envío</ion-label>
                 <ion-select formControlName="deliveryType" placeholder="Select">
 
-                  <ion-select-option value="DELIVERY">Delivery</ion-select-option>
-                  <ion-select-option value="PICKUP">Pick up</ion-select-option>
+                  <ion-select-option value="DELIVERY">Envio</ion-select-option>
+                  <ion-select-option value="PICKUP">Recojer</ion-select-option>
                   <ion-select-option value="ALL">Both of them</ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
                 <ion-label>Método de pago</ion-label>
                 <ion-select formControlName="paymentMethod" placeholder="Select">
-                  <ion-select-option value="CASH">Cash</ion-select-option>
-                  <ion-select-option value="CARD">Card</ion-select-option>
+                  <ion-select-option value="CASH">Efectivo</ion-select-option>
+                  <ion-select-option value="CARD">Tarjeta</ion-select-option>
                   <ion-select-option value="ALL">Both of them</ion-select-option>
                 </ion-select>
               </ion-item>
 
                 <ion-button   (click)="camera()" color="secondary" expand="block" shape="round">
-                 {{imagen ?'Upload another image':'Upload Image'}}
+                 {{imagen ?'Cargar Otra Imagen':'Cargar Imagen'}}
                   </ion-button>
             </ion-list>
 
           </form>
 
       <ion-button *ngIf="!individual" (click)="createBranch() " [disabled]="!branchForm.valid "  class="fixed-bottom mb-1 ">
-        <ion-label class="text-white p-1">Next</ion-label>
+        <ion-label class="text-white p-1">Siguiente</ion-label>
       </ion-button>
       <ion-button *ngIf="individual"  (click)="editBranch() "  class="fixed-bottom mb-1 ">
-        <ion-label class="text-white p-1">Save</ion-label>
+        <ion-label class="text-white p-1">Guardar</ion-label>
       </ion-button>
+      <br>
+      <br>
+      <br>
     </ion-content>
   </ng-template>
 </ion-modal>

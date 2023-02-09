@@ -1,12 +1,12 @@
-<ion-footer collapse="fade" class="footer">
+<ion-footer collapse="fade" class="footer" *ngIf="currentRoute != '/login'">
 	<ion-toolbar>
 		<div class="row d-flex justify-content-center" style="height: 100%;">
-			<ion-button class="col-1 bnt-home">
+			<button class="col-1 btn-home" routerLink="/dashboard">
 			  <ion-icon name="home"></ion-icon>
-		  </ion-button>
-		  <ion-button class="col-1">
+		  </button>
+		  <button class="col-1 btn-logout">
 			  <ion-icon name="log-in"></ion-icon>
-		  </ion-button>
+		  </button>
 		</div>
 	</ion-toolbar>
 </ion-footer>

@@ -1,38 +1,38 @@
     <div class="container-fluid row  mx-auto mt-5" >
-            <div class="col-md-5"  style="border-right: 1px solid rgb(178, 178, 178);">
-              <h3>Create Product</h3>
+            <div class="col-md-5"  style="border-right: 1px solid #ff9600;">
+              <h3>Crear productos</h3>
 
               <form [formGroup]="productForm" >
 
                 <ion-list lines="none">
                   <ion-item>
-                    <ion-input formControlName="name" type="text" placeholder="Product name" class="bg-white my-2"></ion-input>
+                    <ion-input formControlName="name" type="text" placeholder="Nombre del producto" class="bg-white my-2"></ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="description" type="text" placeholder="Description" class="bg-white my-2"></ion-input>
+                    <ion-input formControlName="description" type="text" placeholder="Descripción" class="bg-white my-2"></ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="price" type="number" placeholder="Price" class="bg-white my-2"></ion-input>
+                    <ion-input formControlName="price" type="number" placeholder="Precio" class="bg-white my-2"></ion-input>
                   </ion-item>
                   <ion-item>
                     <ion-input formControlName="freeSides" type="number" placeholder="Free Sides" class="bg-white my-2"></ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-label>Category</ion-label>
-                      <ion-select formControlName="category"  placeholder="select">
+                    <ion-label>Categoría</ion-label>
+                      <ion-select formControlName="category"  placeholder="Selecciona">
                         <ion-select-option [value]="item.id" *ngFor="let item of Categorias">{{item.name}}</ion-select-option>
                       </ion-select>
                   </ion-item>
                   <ion-item>
-                    <ion-label>Branch</ion-label>
-                      <ion-select formControlName="branch" multiple="true"  placeholder="select">
+                    <ion-label>Sucursal</ion-label>
+                      <ion-select formControlName="branch" multiple="true"  placeholder="Selecciona">
                         <ion-select-option [value]="item.id" *ngFor="let item of Branchs">{{item.name}}</ion-select-option>
 
                       </ion-select>
                   </ion-item>
                   <ion-item *ngIf="Adicionales.length>0">
-                    <ion-label>Additionals</ion-label>
-                      <ion-select formControlName="adicionales" multiple="true"  placeholder="select">
+                    <ion-label>Adicionales</ion-label>
+                      <ion-select formControlName="adicionales" multiple="true"  placeholder="selecciona">
                         <div *ngFor="let item of Adicionales">
                           <ion-select-option *ngIf="item.active" [value]="item.id" >{{item.name}}</ion-select-option>
 
@@ -42,8 +42,8 @@
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Tags</ion-label>
-                    <ion-select formControlName="tags" multiple="true" placeholder="Select Tags">
+                    <ion-label>Etiquetas</ion-label>
+                    <ion-select formControlName="tags" multiple="true" placeholder="Selecciona etiquetas">
                       <ion-select-option [value]="tags.NEW">{{tags.NEW}}</ion-select-option>
                       <ion-select-option [value]="tags.POPULAR">{{tags.POPULAR}}</ion-select-option>
                       <ion-select-option [value]="tags.PROMOTION">{{tags.PROMOTION}}</ion-select-option>
@@ -53,11 +53,11 @@
                   </ion-item>
 
                   <ion-button (click)="image()" class="ion-margin"  color="secondary" expand="block" shape="round">
-                    {{imagen ?'Upload another image':'Upload Image'}}
+                    {{imagen ?'Cargar otra imagen':'Cargar imagen'}}
                      </ion-button>
                   <div class="text-center mt-5">
                     <ion-button  (click)="save()" [disabled]="!productForm.valid" style="color:white!important" expand="block" shape="round">
-                    Save
+                    Guardar
                     </ion-button>
                   </div>
                 </ion-list>
@@ -65,9 +65,9 @@
               </form>
             </div>
             <div class="col-md-7" >
-              <h3>Products</h3>
-              <ion-searchbar *ngIf="Productos.length>0" [(ngModel)]="search" placeholder="Search"  [debounce]="250" ></ion-searchbar>
-              <h4 class="my-3"  *ngIf="Productos.length==0">Create products for your categories</h4>
+              <h3>Productos</h3>
+              <ion-searchbar *ngIf="Productos.length>0" [(ngModel)]="search" placeholder="Buscar..."  [debounce]="250" ></ion-searchbar>
+              <h4 class="my-3"  *ngIf="Productos.length==0">Crear productos para tus categorias</h4>
               <div id="Layer1" style="width:100%; height:615px; overflow: scroll;">
 
                 <ion-list *ngIf="Productos.length>0">
@@ -111,20 +111,20 @@
                 <br>
                 <br>
               <ion-text class="text-center">
-                <h3 *ngIf="editarDias">Edit Product Schedule </h3>
-                <h3 *ngIf="!editarDias">Create Product Schedule</h3>
+                <h3 *ngIf="editarDias">Editar itinerario de producto</h3>
+                <h3 *ngIf="!editarDias">Crear itinerario de producto</h3>
               </ion-text>
 
               <ion-item>
-                <ion-label class="me-5">Day</ion-label>
-                <ion-label class="ms-5" style="    margin-left: 130px!important;">Open</ion-label>
-                <ion-label>Close</ion-label>
+                <ion-label class="me-5">Día</ion-label>
+                <ion-label class="ms-5" style="    margin-left: 130px!important;">Abre</ion-label>
+                <ion-label>Cierra</ion-label>
                 <ion-label class="ms-5">Active</ion-label>
               </ion-item>
               <ion-list>
                   <ion-item *ngFor="let item of dias">
                     <ion-label slot="start" style="width: 30px;" >{{item.name}}</ion-label>
-                      <ion-select (ionChange)=" assign(item.name,$event,'OPEN')" class="me-5" [value]="item.open" placeholder="Open">
+                      <ion-select (ionChange)=" assign(item.name,$event,'OPEN')" class="me-5" [value]="item.open" placeholder="Abierto">
                         <ion-select-option value="0:00">0:00</ion-select-option>
                         <ion-select-option value="1:00">1:00</ion-select-option>
                         <ion-select-option value="2:00">2:00</ion-select-option>
@@ -151,7 +151,7 @@
                         <ion-select-option value="23:00">23:00</ion-select-option>
                       </ion-select>
 
-                      <ion-select (ionChange)=" assign(item.name,$event,'CLOSE')"  [value]="item.close" placeholder="Open">
+                      <ion-select (ionChange)=" assign(item.name,$event,'CLOSE')"  [value]="item.close" placeholder="Abierto">
                         <ion-select-option value="0:00">0:00</ion-select-option>
                         <ion-select-option value="1:00">1:00</ion-select-option>
                         <ion-select-option value="2:00">2:00</ion-select-option>
@@ -184,11 +184,11 @@
 
               <div class="d-flex">
                 <ion-button *ngIf="editarDias"(click)="days=!days;" shape="round"  class=" ion-padding-horizontal mx-auto ">
-                  <ion-label class="text-white px-5">Updates</ion-label>
+                  <ion-label class="text-white px-5">Actualizaciones</ion-label>
                 </ion-button>
 
                 <ion-button *ngIf="!editarDias" (click)="days=!days" shape="round"  class=" ion-padding-horizontal mx-auto ">
-                  <ion-label class="text-white px-5">Save</ion-label>
+                  <ion-label class="text-white px-5">Guardar</ion-label>
                 </ion-button>
               </div>
               </ion-content>
@@ -198,23 +198,23 @@
 <ion-modal [backdropDismiss]="false" [isOpen]="editProduct"  style="width:100%; height:100%;">
 <ng-template style="width:100%; height:215px; overflow: scroll;">
   <ion-toolbar class="back">
-<div class="row">
+<div class="row" style="background-color: #ff9600;">
     <ion-segment [value]="select">
-      <ion-segment-button  (click)="select='default' " value="default">
-        <ion-label>Product</ion-label>
+      <ion-segment-button  (click)="select='default' " value="default" [ngClass]="{'item-selected' : select=='default'}">
+        <ion-label>Producto</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="select='segment' " value="segment">
-        <ion-label>Options</ion-label>
+      <ion-segment-button (click)="select='segment' " value="segment" [ngClass]="{'item-selected' : select=='segment'}">
+        <ion-label>Opciones</ion-label>
       </ion-segment-button>
       <ion-segment-button (click)="editProduct=!editProduct; imagenEdit=null; productselected=null" >
-        <ion-label>Exit</ion-label>
+        <ion-label>Salir</ion-label>
       </ion-segment-button>
     </ion-segment>
 </div>
   </ion-toolbar>
 
 
-  <ion-content *ngIf="select==='default'">
+  <ion-content *ngIf="select==='default'" class="background-modal">
     <form [formGroup]="productFormEdit" >
 
       <ion-list lines="none">
@@ -232,28 +232,28 @@
           <ion-input formControlName="freeSides" type="number" placeholder="Free Sides" class="bg-white my-2"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label>Category</ion-label>
-            <ion-select formControlName="category"  placeholder="Select">
+          <ion-label>Categoría</ion-label>
+            <ion-select formControlName="category"  placeholder="Selecciona">
               <ion-select-option [value]="item.id" *ngFor="let item of Categorias">{{item.name}}</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>Branch</ion-label>
-            <ion-select formControlName="branch" multiple="true"  placeholder="select">
+          <ion-label>Sucursal</ion-label>
+            <ion-select formControlName="branch" multiple="true"  placeholder="Selecciona">
               <ion-select-option [value]="item.id" *ngFor="let item of Branchs">{{item.name}}</ion-select-option>
 
             </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>Additionals</ion-label>
-            <ion-select formControlName="adicionales" multiple="true"  placeholder="select">
+          <ion-label>Adicionales</ion-label>
+            <ion-select formControlName="adicionales" multiple="true"  placeholder="Selecciona">
               <ion-select-option [value]="item.id" *ngFor="let item of Adicionales">{{item.name}}</ion-select-option>
 
             </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>Tags</ion-label>
-          <ion-select formControlName="tags" multiple="true" placeholder="Select Tags">
+          <ion-label>Etiquetas</ion-label>
+          <ion-select formControlName="tags" multiple="true" placeholder="Selecciona etiquetas">
             <ion-select-option [value]="tags.NEW">{{tags.NEW}}</ion-select-option>
             <ion-select-option [value]="tags.POPULAR">{{tags.POPULAR}}</ion-select-option>
             <ion-select-option [value]="tags.PROMOTION">{{tags.PROMOTION}}</ion-select-option>
@@ -262,19 +262,19 @@
           </ion-select>
         </ion-item>
         <ion-button  class="ion-margin"  (click)="image(true)" color="secondary" expand="block" shape="round">
-          {{imagenEdit ?'Load another image':'Upload Image'}}
+          {{imagenEdit ?'Cargar otra Imagen':'Cargar Imagen'}}
            </ion-button>
 
         <div class="text-center mt-5 d-flex">
           <ion-button (click)="update()" style="color:white!important" class="mx-auto" shape="round">
-          Save
+          Guardar
           </ion-button>
         </div>
       </ion-list>
 
     </form>
   </ion-content>
-  <ion-content *ngIf="select==='segment'">
+  <ion-content *ngIf="select==='segment'" class="background-modal">
 
       <ion-list *ngIf="productselected.variations.length > 0">
 
@@ -292,7 +292,7 @@
       </ion-list>
       <div class="d-flex">
         <ion-button (click)="editOption=!editOption; " class=" text-white mt-3 mx-auto" shape="round">
-         Add Option
+         Agregar opción
          </ion-button>
       </div>
   </ion-content>
@@ -309,24 +309,24 @@
     </ion-toolbar>
 
 
-    <ion-content >
+    <ion-content class="background-modal">
       <form [formGroup]="Variation" >
 
         <ion-list lines="none">
           <ion-item>
-            <ion-input formControlName="name" type="text" placeholder="Product name" class="bg-white my-2"></ion-input>
+            <ion-input formControlName="name" type="text" placeholder="Nombre del producto" class="bg-white my-2"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input formControlName="price" type="number" placeholder="Price" class="bg-white my-2"></ion-input>
+            <ion-input formControlName="price" type="number" placeholder="Precio" class="bg-white my-2"></ion-input>
           </ion-item>
 
           <ion-button  class="ion-margin"  (click)="image(false,true)" color="secondary" expand="block" shape="round">
-            {{imageVariation ?'Load another image':'Upload Image'}}
+            {{imageVariation ?'Cargar otra Imagen':'Cargar Imagen'}}
              </ion-button>
 
           <div class="text-center mt-5 d-flex">
             <ion-button (click)="saveVariation()" style="color:white!important" class="mx-auto" shape="round">
-            Save
+            Guardar
             </ion-button>
           </div>
         </ion-list>
