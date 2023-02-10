@@ -41,14 +41,14 @@
 }
 
 .background-app{
-    background-image: url("assets/img/fondo-app.jpg");
-    background-size: cover;
+    background-image: url("assets/img/fondo-login.png");
+    background-size: contain;
 }
 
 
 .background-modal{
-    background-image: url("assets/img/fondo-app.jpg");
-    background-size: cover;
+    background-image: url("assets/img/fondo-login.png");
+    background-size: contain;
 }
 
 
@@ -282,7 +282,7 @@ ion-header  button{
 }
 h1,h2,h3,h4,h5,h6{
     margin: 0px;
-    color: white !important;
+    color: #000000 !important;
 }
 ngx-dropzone{
     background: transparent !important;

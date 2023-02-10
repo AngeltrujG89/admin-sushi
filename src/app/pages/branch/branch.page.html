@@ -9,7 +9,7 @@
     <div class="container mt-5">
       <div class="row">
         <div class="d-flex my-3">
-          <ion-button  class="mx-auto text-white" (click)=" days=!days" expand="block" shape="round">
+          <ion-button  class="mx-auto text-white" (click)=" days=!days" expand="block" shape="round" style="--background: #ff9600;">
             Crear Nueva Sucursal
           </ion-button>
         </div>
@@ -24,7 +24,7 @@
                  <ion-item *ngIf="item?.active">
                   <ion-label ><img style="width: 100px;" [src]="item.image? Uri+item.image : Uri+'sin_imagen.jpg'"></ion-label>
                   <ion-label > {{item.name}}  </ion-label>
-                  <ion-button slot="end" (click)="deleteBranch(item.id.toString())"  class="mx-1" color="danger">
+                  <ion-button slot="end" (click)="deleteBranch(item.id.toString())"  class="mx-1" style="--background: #ff9600;">
                     <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
                   </ion-button>
                   <ion-button slot="end" (click)="updateBranch(item);data=true;individual=true"  class="mx-1" style="--background: #d6e601;">
@@ -143,7 +143,7 @@
         <br>
         <br>
     </ion-list>
-      <ion-button (click)="days=!days;data=!data" *ngIf="!individual"  class="fixed-bottom mb-1 ">
+      <ion-button (click)="days=!days;data=!data" *ngIf="!individual"  class="fixed-bottom mb-1 " style="--background: #ff9600;">
         <ion-label class="text-white p-1">Siguiente</ion-label>
       </ion-button>
       <ion-button (click)="days=!days;updateSchedule(); " *ngIf="individual" class="fixed-bottom mb-1 ">
@@ -177,16 +177,16 @@
 
             <ion-list lines="none">
               <ion-item>
-                <ion-input formControlName="name" type="text" placeholder="Branch's name" class="bg-white my-2"></ion-input>
+                <ion-input formControlName="name" type="text" placeholder="Nombre de la sucursal" class="bg-white my-2"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input formControlName="phone" type="text" placeholder="Phone" class="bg-white my-2"></ion-input>
+                <ion-input formControlName="phone" type="text" placeholder="Teléfono" class="bg-white my-2"></ion-input>
               </ion-item>
                <ion-item>
-                <ion-input formControlName="shippingCost" type="number" placeholder="Shipping cost per kilometer" class="bg-white my-2"></ion-input>
+                <ion-input formControlName="shippingCost" type="number" placeholder="Costo de envío por kilometro" class="bg-white my-2"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input formControlName="rate" type="number" placeholder="Service ratio (in Km)" class="bg-white my-2"></ion-input>
+                <ion-input formControlName="rate" type="number" placeholder="Radio de servicio (Km)" class="bg-white my-2"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label>Tipo de envío</ion-label>
@@ -206,17 +206,17 @@
                 </ion-select>
               </ion-item>
 
-                <ion-button   (click)="camera()" color="secondary" expand="block" shape="round">
+                <ion-button   (click)="camera()" expand="block" shape="round" style="--background: #d6e601;">
                  {{imagen ?'Cargar Otra Imagen':'Cargar Imagen'}}
                   </ion-button>
             </ion-list>
 
           </form>
 
-      <ion-button *ngIf="!individual" (click)="createBranch() " [disabled]="!branchForm.valid "  class="fixed-bottom mb-1 ">
+      <ion-button *ngIf="!individual" (click)="createBranch() " [disabled]="!branchForm.valid "  class="fixed-bottom mb-1 " style="--background: #ff9600;">
         <ion-label class="text-white p-1">Siguiente</ion-label>
       </ion-button>
-      <ion-button *ngIf="individual"  (click)="editBranch() "  class="fixed-bottom mb-1 ">
+      <ion-button *ngIf="individual"  (click)="editBranch() "  class="fixed-bottom mb-1 " style="--background: #ff9600;">
         <ion-label class="text-white p-1">Guardar</ion-label>
       </ion-button>
       <br>

@@ -52,11 +52,11 @@
                     </ion-select>
                   </ion-item>
 
-                  <ion-button (click)="image()" class="ion-margin"  color="secondary" expand="block" shape="round">
+                  <ion-button (click)="image()" class="ion-margin"  expand="block" shape="round" style="--background: #d6e601;">
                     {{imagen ?'Cargar otra imagen':'Cargar imagen'}}
                      </ion-button>
                   <div class="text-center mt-5">
-                    <ion-button  (click)="save()" [disabled]="!productForm.valid" style="color:white!important" expand="block" shape="round">
+                    <ion-button  (click)="save()" [disabled]="!productForm.valid" style="color:white!important" expand="block" shape="round" style="--background: #ff9600;">
                     Guardar
                     </ion-button>
                   </div>
@@ -82,7 +82,7 @@
                    <!--  <ion-button slot="end" color="secondary" class="mx-1" (click)="days=!days; asignarDias(item.id,item.dias)">
                       <ion-icon slot="icon-only" name="calendar-outline" style="color: white !important;"></ion-icon>
                     </ion-button> -->
-                    <ion-button slot="end"  sclass="mx-1" (click)="delete(item.id)">
+                    <ion-button slot="end"  sclass="mx-1" (click)="delete(item.id)" style="--background: #ff9600;">
                       <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
                     </ion-button>
 
@@ -261,12 +261,12 @@
             <ion-select-option [value]="tags.VEGAN">{{tags.VEGAN}}</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-button  class="ion-margin"  (click)="image(true)" color="secondary" expand="block" shape="round">
+        <ion-button  class="ion-margin"  (click)="image(true)"  expand="block" shape="round" style="--background: #d6e601;">
           {{imagenEdit ?'Cargar otra Imagen':'Cargar Imagen'}}
            </ion-button>
 
         <div class="text-center mt-5 d-flex">
-          <ion-button (click)="update()" style="color:white!important" class="mx-auto" shape="round">
+          <ion-button (click)="update()" style="color:white!important" class="mx-auto" shape="round" style="--background: #ff9600;">
           Guardar
           </ion-button>
         </div>
@@ -282,16 +282,16 @@
           <ion-img slot="start"class="me-4" style="width: 70px; height: 70px;" [src]="Uri+item.image"></ion-img>
           <ion-label >{{item.name}}</ion-label>
           <ion-label >{{item.price | currency}}</ion-label>
-          <ion-button slot="end" >
+          <ion-button slot="end" style="--background: #ff9600;">
             <ion-icon class="text-white" slot="icon-only" name="trash-outline"></ion-icon>
           </ion-button>
-          <ion-button slot="end" color="secondary" class="mx-2">
+          <ion-button slot="end" class="mx-2" style="--background: #d6e601;">
             <ion-icon class="text-white" slot="icon-only" name="create-outline"></ion-icon>
           </ion-button>
         </ion-item>
       </ion-list>
       <div class="d-flex">
-        <ion-button (click)="editOption=!editOption; " class=" text-white mt-3 mx-auto" shape="round">
+        <ion-button (click)="editOption=!editOption; " class=" text-white mt-3 mx-auto" shape="round" style="--background: #ff9600;">
          Agregar opción
          </ion-button>
       </div>
@@ -320,12 +320,12 @@
             <ion-input formControlName="price" type="number" placeholder="Precio" class="bg-white my-2"></ion-input>
           </ion-item>
 
-          <ion-button  class="ion-margin"  (click)="image(false,true)" color="secondary" expand="block" shape="round">
+          <ion-button  class="ion-margin"  (click)="image(false,true)" expand="block" shape="round" style="--background: #d6e601;">
             {{imageVariation ?'Cargar otra Imagen':'Cargar Imagen'}}
              </ion-button>
 
           <div class="text-center mt-5 d-flex">
-            <ion-button (click)="saveVariation()" style="color:white!important" class="mx-auto" shape="round">
+            <ion-button (click)="saveVariation()" style="color:white!important" class="mx-auto" shape="round" style="--background: #ff9600;">
             Guardar
             </ion-button>
           </div>

@@ -38,28 +38,29 @@ export class CategoriasComponent implements OnInit {
     }).subscribe( (res:any) => {
       this.catRepo.addCategoria(res)
       this.name="",
-      this.ngx.success("New category created")
+      this.ngx.success("Nueva categoría creada")
     })
   }
 
 
   async delete(id:number){
     let alert = await this.alert.create({
-    message: 'Do you want delete this category?',
+    message: '¿Quieres eliminar esta categoría?',
+    // message: 'Do you want delete this category?',
     buttons: [
       {
-        text: 'Cancel',
+        text: 'Cancelar',
         role: 'cancel',
         handler: () => {
           console.log('Cancel clicked');
         }
       },
       {
-        text: 'delete',
+        text: 'Eliminar',
         handler: () => {
           this.categoryS.delete("category",id).subscribe( (res)=>{
             this.catRepo.deleteCategoria(id);
-            this.ngx.success("Category Deleted");
+            this.ngx.success("Categoría ");
           })
         }
       }
@@ -75,7 +76,7 @@ export class CategoriasComponent implements OnInit {
     this.categoryS.update("category",id,{name:this.editName}).subscribe( (res)=>{
       this.catRepo.updateCategoria(id,res)
       this.editName="";
-      this.ngx.success("Category edited");
+      this.ngx.success("Se editó la categoría");
       this.idselected=-1
       this.editModal=false;
     })

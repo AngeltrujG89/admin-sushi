@@ -8,7 +8,7 @@
          <ion-input [(ngModel)]="name" type="text" placeholder="Nombre de la categoría" class="bg-white"></ion-input>
         </ion-item>
         <div class="text-center mt-5">
-          <ion-button id="btn-save" color="danger" (click)="save()" [disabled]="name.length===0" style="color:white!important" expand="block" shape="round">
+          <ion-button id="btn-save"  (click)="save()" [disabled]="name.length===0" style="color:white!important; --background: #ff9600;" expand="block" shape="round">
           Guardar
           </ion-button>
         </div>
@@ -27,7 +27,7 @@
           <ion-button slot="end" class="mx-1" (click)="editModal=!editModal; idselected=item.id; editName=item.name" style="--background: #d6e601;">
             <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
           </ion-button>
-          <ion-button slot="end" class="mx-1" (click)="delete(item.id)" color="danger">
+          <ion-button slot="end" class="mx-1" (click)="delete(item.id)" style="--background: #ff9600;">
             <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
           </ion-button>
 
@@ -53,7 +53,7 @@
          <ion-input [(ngModel)]="editName" type="text" placeholder="Category name" class="bg-white"></ion-input>
         </ion-item>
         <div class="text-center mt-5">
-          <ion-button   (click)="edit()" style="color:white!important;" shape="round">
+          <ion-button   (click)="edit()" style="color:white!important;" shape="round" style="--background: #ff9600;">
           Guardar
           </ion-button>
         </div>

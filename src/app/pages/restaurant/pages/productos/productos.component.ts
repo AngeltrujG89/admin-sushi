@@ -33,41 +33,41 @@ export class ProductosComponent implements OnInit {
   Branchs:any = [];
   dias:any = [
     {
-      name:"MONDAY",
+      name:"LUNES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"TUESDAY",
+      name:"MARTES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"WEDNESDAY",
+      name:"MIERCOLES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"THURSDAY",
+      name:"JUEVES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"FRIDAY",
+      name:"VIERNES",
       open:"9:00",
       close:"18:00",
       active:true
     },{
-      name:"SATURDAY",
+      name:"SABADO",
       open:"9:00",
       close:"18:00",
       active:true
     },{
-      name:"SUNDAY",
+      name:"DOMINGO",
       open:"9:00",
       close:"18:00",
       active:true
@@ -248,27 +248,28 @@ export class ProductosComponent implements OnInit {
       }
       )
       this.imagenEdit=null;
-      this.ngx.success("Product saved")
+      this.ngx.success("Producto guardado")
     })
   }
 
 
   async delete(id:number){
     let alert = await this.alert.create({
-      message: 'Do you want delete this product?',
+      message: '¿Quieres eliminar este producto?',
+      // message: 'Do you want delete this product?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'delete',
+          text: 'Eliminar',
           handler: () => {
             this.productS.delete("product",id).subscribe( res =>{
-              this.ngx.success("Product deleted")
+              this.ngx.success("Se eliminó el producto")
               this.Productos=this.Productos.filter((p:any) => p.id !==id)
             })
           }
@@ -286,7 +287,7 @@ editProduct=false;
   changeStatus(data:any){
     this.productS.update("product",data.id,{active:!data.active}).subscribe(res =>{
       this.productRepo.updateProduct(data.id,res)
-      this.ngx.success("Product edited")
+      this.ngx.success("Se editó el producto")
     })
   }
 
@@ -319,41 +320,41 @@ id:number=-1
   resetDias(){
     this.dias = [
       {
-        name:"MONDAY",
+        name:"LUNES",
         open:"9:00",
         close:"18:00",
         active:true
       },
       {
-        name:"TUESDAY",
+        name:"MARTES",
         open:"9:00",
         close:"18:00",
         active:true
       },
       {
-        name:"WEDNESDAY",
+        name:"MIERCOLES",
         open:"9:00",
         close:"18:00",
         active:true
       },
       {
-        name:"THURSDAY",
+        name:"JUEVES",
         open:"9:00",
         close:"18:00",
         active:true
       },
       {
-        name:"FRIDAY",
+        name:"VIERNES",
         open:"9:00",
         close:"18:00",
         active:true
       },{
-        name:"SATURDAY",
+        name:"SABADO",
         open:"9:00",
         close:"18:00",
         active:true
       },{
-        name:"SUNDAY",
+        name:"DOMINGO",
         open:"9:00",
         close:"18:00",
         active:true

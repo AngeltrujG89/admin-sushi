@@ -17,7 +17,7 @@
          </ion-item>
 
         <div class="text-center mt-5">
-          <ion-button (click)="create()" color="danger" [disabled]="name===null || price===null" style="color:white!important" expand="block" shape="round">
+          <ion-button (click)="create()" [disabled]="name===null || price===null" style="color:white!important" expand="block" shape="round" style="--background: #ff9600;">
           Guardar
           </ion-button>
         </div>
@@ -33,10 +33,10 @@
         <ion-item lines="none" *ngFor="let item of Adicional | filterSearch:search">
           <ion-toggle  (ionChange)="activeDesactive(item.id)" [checked]="item.active" class="border-r me-3"></ion-toggle>
           <ion-label>{{item.name}}  </ion-label>
-          <ion-button (click)="editAdd=!editAdd; assignEdit(item)" slot="end" color="secondary" class="mx-1">
+          <ion-button (click)="editAdd=!editAdd; assignEdit(item)" slot="end" class="mx-1" style="--background: #d6e601;">
             <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
           </ion-button>
-          <ion-button slot="end" class="mx-1" (click)="delete(item.id)" color="danger">
+          <ion-button slot="end" class="mx-1" (click)="delete(item.id)" style="--background: #ff9600;">
             <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
           </ion-button>
         </ion-item>
@@ -50,7 +50,7 @@
 <ion-modal [isOpen]="editAdd">
   <ng-template heigth="100%">
    <ion-toolbar class="back fixed-top " style="background-color: black;">
-     <ion-button (click)="editAdd=!editAdd; productsEdit=[]" class="ms-3">
+     <ion-button (click)="editAdd=!editAdd; productsEdit=[]" class="ms-3" style="--background: #d6e601;"> 
        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
      </ion-button>
    </ion-toolbar>
@@ -71,7 +71,7 @@
             <ion-toggle  slot="start" [(ngModel)]="canFreeEdit"  [checked]="canFreeEdit" class="border-r me-3"> </ion-toggle>
            </ion-item>
          <div class="text-center mt-5 container">
-           <ion-button (click)="edit()" style="color:white!important"  shape="round" color="danger">
+           <ion-button (click)="edit()" style="color:white!important"  shape="round"  style="--background: #ff9600;">
            Guardar
            </ion-button>
          </div>

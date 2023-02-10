@@ -43,14 +43,14 @@ export class AdicionalesComponent implements OnInit {
       this.name=null;
       this.price=null;
       this.canFree=false;
-      this.ngx.success("Additional Saved");
+      this.ngx.success("Adicional guardado");
     })
   }
 
   delete(id:number){
     this.adicionalS.delete("adicionales",id).subscribe(res =>{
       this.addRepo.deleteAdicionale(id);
-      this.ngx.success("Additional Deleted")
+      this.ngx.success("Adicional eliminado")
     })
   }
 
@@ -60,7 +60,7 @@ export class AdicionalesComponent implements OnInit {
       this.addRepo.updateAdicionale(this.idEdit,res);
       this.idEdit=-1;
       this.nameEdit=null;
-      this.ngx.success("aditional updated")
+      this.ngx.success("Adicional actualizado")
       this.priceEdit=null;
       this.editAdd=false;
       this.canFreeEdit=false;
@@ -84,9 +84,9 @@ export class AdicionalesComponent implements OnInit {
     this.adicionalS.update("adicionales",id,{active:!add.active}).subscribe( (res:any) =>{
       this.addRepo.updateAdicionale(id,res);
     if(res.active){
-      this.ngx.success("Additional actived")
+      this.ngx.success("Adicional activado")
     }else{
-      this.ngx.success("Additional desactived")
+      this.ngx.success("Adicional desactivado")
     }
     })
   }
