@@ -1,12 +1,10 @@
-<ion-footer collapse="fade" class="footer" *ngIf="currentRoute != '/login'">
-	<ion-toolbar>
-		<div class="row d-flex justify-content-center" style="height: 100%;">
-			<button class="col-1 btn-home" routerLink="/dashboard">
-			  <ion-icon name="home"></ion-icon>
-		  </button>
-		  <button class="col-1 btn-logout">
-			  <ion-icon name="log-in"></ion-icon>
-		  </button>
-		</div>
-	</ion-toolbar>
-</ion-footer>
+<ion-tabs class="footer">
+    <ion-tab-bar [translucent]="true"  mode="ios"  *ngIf="['/','/login'].indexOf(this.router.url) == -1">
+      <ion-tab-button class="btn-home" [routerLink]="['/dashboard']" style="width: 5% !important;">
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button class="btn-logout" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

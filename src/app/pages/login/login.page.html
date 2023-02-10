@@ -2,14 +2,14 @@
 <ion-content class="fondo">
   <div class="container d-flex h-100">
     <div class="d-flex m-auto">
-      <ion-card>
+      <ion-card style="background-color: transparent !important; box-shadow: none !important">
         <ion-card-header class="text-center">
-        <img src="../../../assets/img/sushigada-logo-st.png" class="img-fluid" width="150px " alt="">
+        <img src="../../../assets/img/sushigada-logo.png" class="img-fluid" width="150px " alt="">
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content class="pt-2">
           <form [formGroup]="loginForm">
-            <ion-input  formControlName="email"type="text" placeholder="Correo" class="border-r my-3"></ion-input>
-            <ion-input (keyup.enter)="login()"  formControlName="password" type="password" placeholder="Contraseña" class="border-r my-3"></ion-input>
+            <ion-input  formControlName="email"type="text" placeholder="Correo" class="border-r my-3" style="--background: white !important"></ion-input>
+            <ion-input (keyup.enter)="login()"  formControlName="password" type="password" placeholder="Contraseña" class="border-r my-3" style="--background: white !important"></ion-input>
             <ion-button (click)="login()" class="border-r" expand="block" fill="clear" shape="round">
                Iniciar Sesión
             </ion-button>

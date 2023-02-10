@@ -128,41 +128,41 @@ data=false;
 days=false;
 dias:any = [
   {
-    name:"MONDAY",
+    name:"LUNES",
     open:"7:00",
     close:"18:00",
     active:true
   },
   {
-    name:"TUESDAY",
+    name:"MARTES",
     open:"7:00",
     close:"18:00",
     active:true
   },
   {
-    name:"WEDNESDAY",
+    name:"MIERCOLES",
     open:"7:00",
     close:"18:00",
     active:true
   },
   {
-    name:"THURSDAY",
+    name:"JUEVES",
     open:"7:00",
     close:"18:00",
     active:true
   },
   {
-    name:"FRIDAY",
+    name:"VIERNES",
     open:"7:00",
     close:"18:00",
     active:true
   },{
-    name:"SATURDAY",
+    name:"SABADO",
     open:"7:00",
     close:"18:00",
     active:true
   },{
-    name:"SUNDAY",
+    name:"DOMINGO",
     open:"7:00",
     close:"18:00",
     active:true

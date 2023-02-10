@@ -24,7 +24,7 @@
       <ion-list  >
         <ion-item lines="none" *ngFor="let item of Categorias | filterSearch:search ">
           <ion-label> {{item.name}} </ion-label>
-          <ion-button slot="end" color="secondary" class="mx-1" (click)="editModal=!editModal; idselected=item.id; editName=item.name">
+          <ion-button slot="end" class="mx-1" (click)="editModal=!editModal; idselected=item.id; editName=item.name" style="--background: #d6e601;">
             <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
           </ion-button>
           <ion-button slot="end" class="mx-1" (click)="delete(item.id)" color="danger">

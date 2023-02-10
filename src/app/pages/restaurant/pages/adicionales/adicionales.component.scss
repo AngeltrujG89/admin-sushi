@@ -5,3 +5,16 @@ ion-label, ion-select{
 ion-button{
     --background : #d6e601 !important;
 }
+
+ion-toggle{
+    --handle-background: #ff9600 !important;
+    --handle-background-checked : #d6e601 !important;
+}
+
+ion-toggle::part(track),
+ion-toggle.toggle-checked::part(track){
+    background: #eb4a44;
+
+    /* Required for iOS handle to overflow the height of the track */
+    overflow: visible;
+}

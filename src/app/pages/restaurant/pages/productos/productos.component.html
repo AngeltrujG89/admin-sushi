@@ -72,11 +72,11 @@
 
                 <ion-list *ngIf="Productos.length>0">
                   <ion-item lines="none" *ngFor="let item of Productos | filterSearch:search" class="my-2">
-                    <ion-toggle  [checked]="item.active" (ionChange)="changeStatus(item)" class="border-r me-3" color="primary"></ion-toggle>
+                    <ion-toggle  [checked]="item.active" (ionChange)="changeStatus(item)" class="border-r me-3"></ion-toggle>
                     <ion-img class="me-4" style="width: 70px; height: 70px;" [src]="Uri+item.image"></ion-img>
                     <ion-label> {{item.name}}  </ion-label>
 
-                    <ion-button slot="end" color="secondary" class="mx-1" (click)="editProduct=!editProduct; asignForm(item);productselected=item">
+                    <ion-button slot="end" class="mx-1" (click)="editProduct=!editProduct; asignForm(item);productselected=item" style="--background: #d6e601;">
                       <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
                     </ion-button>
                    <!--  <ion-button slot="end" color="secondary" class="mx-1" (click)="days=!days; asignarDias(item.id,item.dias)">
@@ -177,7 +177,7 @@
                         <ion-select-option value="22:00">22:00</ion-select-option>
                         <ion-select-option value="23:00">23:00</ion-select-option>
                       </ion-select>
-                      <ion-toggle [(ngModel)]="item.active" slot="end" color="primary"></ion-toggle>
+                      <ion-toggle [(ngModel)]="item.active" slot="end"></ion-toggle>
                   </ion-item>
 
               </ion-list>

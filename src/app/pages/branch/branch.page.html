@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 
 
-<ion-content>
+<ion-content  class="background-app">
   <div class="container-fluid ">
     <div class="container mt-5 h-100">
       <h1 class="text-start pt-5">Sucursales</h1>
@@ -27,13 +27,13 @@
                   <ion-button slot="end" (click)="deleteBranch(item.id.toString())"  class="mx-1" color="danger">
                     <ion-icon slot="icon-only" name="trash" style="color: white !important;"></ion-icon>
                   </ion-button>
-                  <ion-button slot="end" (click)="updateBranch(item);data=true;individual=true" color="secondary"  class="mx-1">
+                  <ion-button slot="end" (click)="updateBranch(item);data=true;individual=true"  class="mx-1" style="--background: #d6e601;">
                     <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
                   </ion-button>
-                  <ion-button slot="end"  (click)=" direccion={id:item.address.id,address:item.address.address,latitud:item.address.latitud,longitud:item.address.longitud};branch=item.id;preparedMapa(true); " color="secondary"  class="mx-1">
+                  <ion-button slot="end"  (click)=" direccion={id:item.address.id,address:item.address.address,latitud:item.address.latitud,longitud:item.address.longitud};branch=item.id;preparedMapa(true); " class="mx-1" style="--background: #d6e601;">
                     <ion-icon slot="icon-only" name="pin-outline" style="color: white !important;"></ion-icon>
                   </ion-button>
-                 <ion-button slot="end"  (click)="dias=item.dias; days=!days;individual=true; id=item.id" color="secondary"  class="mx-1">
+                 <ion-button slot="end"  (click)="dias=item.dias; days=!days;individual=true; id=item.id"  class="mx-1" style="--background: #d6e601;">
                     <ion-icon slot="icon-only" name="calendar-outline" style="color: white !important;"></ion-icon>
                   </ion-button>
                  </ion-item>
@@ -137,9 +137,11 @@
               <ion-select-option value="22:00">22:00</ion-select-option>
               <ion-select-option value="23:00">23:00</ion-select-option>
             </ion-select>
-            <ion-toggle [(ngModel)]="item.active" slot="end" color="primary"></ion-toggle>
+            <ion-toggle [(ngModel)]="item.active" slot="end"></ion-toggle>
         </ion-item>
-
+        <br>
+        <br>
+        <br>
     </ion-list>
       <ion-button (click)="days=!days;data=!data" *ngIf="!individual"  class="fixed-bottom mb-1 ">
         <ion-label class="text-white p-1">Siguiente</ion-label>

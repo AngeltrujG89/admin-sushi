@@ -13,7 +13,7 @@
 
          <ion-item>
           <ion-label>¿Gratis?</ion-label>
-          <ion-toggle  slot="start" [(ngModel)]="canFree"  [checked]="canFree" class="border-r me-3" color="primary"> </ion-toggle>
+          <ion-toggle  slot="start" [(ngModel)]="canFree"  [checked]="canFree" class="border-r me-3"> </ion-toggle>
          </ion-item>
 
         <div class="text-center mt-5">
@@ -31,7 +31,7 @@
      <div id="Layer1" style="width:100%; height:415px; overflow: scroll;">
       <ion-list *ngIf="Adicional.length>0">
         <ion-item lines="none" *ngFor="let item of Adicional | filterSearch:search">
-          <ion-toggle  (ionChange)="activeDesactive(item.id)" [checked]="item.active" class="border-r me-3" color="primary"></ion-toggle>
+          <ion-toggle  (ionChange)="activeDesactive(item.id)" [checked]="item.active" class="border-r me-3"></ion-toggle>
           <ion-label>{{item.name}}  </ion-label>
           <ion-button (click)="editAdd=!editAdd; assignEdit(item)" slot="end" color="secondary" class="mx-1">
             <ion-icon slot="icon-only" name="create-outline" style="color: white !important;"></ion-icon>
@@ -68,7 +68,7 @@
 
           <ion-item>
             <ion-label>¿Gratis?</ion-label>
-            <ion-toggle  slot="start" [(ngModel)]="canFreeEdit"  [checked]="canFreeEdit" class="border-r me-3" color="primary"> </ion-toggle>
+            <ion-toggle  slot="start" [(ngModel)]="canFreeEdit"  [checked]="canFreeEdit" class="border-r me-3"> </ion-toggle>
            </ion-item>
          <div class="text-center mt-5 container">
            <ion-button (click)="edit()" style="color:white!important"  shape="round" color="danger">

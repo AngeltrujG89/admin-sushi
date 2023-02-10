@@ -1,4 +1,12 @@
 .fondo{
-    background-image: url('../../../assets/img/fondo-app.jpg');
+    background-image: url('../../../assets/img/fondo-login.png');
     background-size: cover;
 }
+
+ion-grid {
+    --ion-grid-width-xl : 60px !important;
+    --ion-grid-width-lg : 30px !important;
+    --ion-grid-width-md : 30px !important;
+    --ion-grid-width-sm : 30px !important;
+    --ion-grid-width-xs : 30px !important;
+  }
