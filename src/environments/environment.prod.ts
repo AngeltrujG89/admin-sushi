@@ -5,5 +5,6 @@ export const environment = {
   server: 'https://api.clikgraphics.info/',
   image:'https://api.clikgraphics.info/uploads/',
   wss:'https://api.clikgraphics.info/',
-  TOKEN:"T0K3N"
+  TOKEN:"T0K3N",
+  mapBoxKey:"pk.eyJ1IjoicHhuZ2VsIiwiYSI6ImNsYzI2ZXJxODBua2szdnBxOGZneTV5NWYifQ.6eZnSD-nr-CmrP8_CtN1YQ",
 };

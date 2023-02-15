@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+
+<ion-content class="background-app">
+
+	<div class="mt-5 container" style="margin-top:100px!important">
+		<h1 *ngIf="quejas.length > 0">Recomendaciones</h1>
+		<h1 *ngIf="quejas.length <= 0">Sin Recomendaciones</h1>
+		<div class="row">
+			<div class="col-md-3" *ngFor="let item of quejas">
+				<ion-card class="my-3">
+					<ion-item>
+						<ion-button (click)="delete(item.id)">
+							<ion-icon class="bg-red " slot="icon-only" name="close-outline"></ion-icon>
+						</ion-button>
+						<ion-label slot="end" class="me-3">{{item.title}}</ion-label>
+
+					</ion-item>
+
+					<ion-card-content>
+						{{item.description}}
+					</ion-card-content>
+					<ion-item>
+						<ion-label slot="start">
+							<p>Client: {{item.user.names}}</p>
+						</ion-label>
+					</ion-item>
+				</ion-card>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+</ion-content>

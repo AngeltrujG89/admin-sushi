@@ -1,0 +1,138 @@
+<app-nav></app-nav>
+
+
+<ion-content class="background-app">
+	<div class="container-fluid ">
+		<div class="container mt-5 h-100">
+			<h1 class="text-start pt-5">Colaboradores</h1>
+
+			<div class="container-fluid d-flex flex-column mt-3">
+				<div class="row">
+					<div class="col-md-6">
+						<h2> Crear Colaboradores</h2>
+
+						<form [formGroup]="userForm">
+
+							<ion-list lines="none">
+								<ion-item>
+									<ion-input formControlName="names" type="text" placeholder="Nombre completo"
+										class="bg-white my-2"></ion-input>
+								</ion-item>
+								<ion-item>
+									<ion-input formControlName="phone" type="text" placeholder="Teléfono"
+										class="bg-white my-2"></ion-input>
+								</ion-item>
+								<ion-item>
+									<ion-input formControlName="email" type="text" placeholder="Email"
+										class="bg-white"></ion-input>
+								</ion-item>
+								<ion-item>
+									<ion-input formControlName="password" type="password" placeholder="Password"
+										class="bg-white my-2"></ion-input>
+								</ion-item>
+								<ion-item>
+									<ion-input formControlName="password2" type="password"
+										placeholder="Confirmar Password" class="bg-white my-2"></ion-input>
+								</ion-item>
+
+								<ion-item>
+									<ion-label>Permisos</ion-label>
+									<ion-select formControlName="role" placeholder="Selecciona">
+
+										<ion-select-option value="ADMIN"
+											*ngIf="you?.role !== 'GERENTE'">Administrador</ion-select-option>
+										<ion-select-option value="GERENTE">Manager</ion-select-option>
+										<ion-select-option value="COLABORADOR">Usuario</ion-select-option>
+									</ion-select>
+								</ion-item>
+
+
+
+
+								<div class="text-center mt-5">
+									<ion-button (click)="createUser()" style="color:white!important" expand="block"
+										shape="round" style="--background : #ff9600; color: white !important;">
+										Guardar
+									</ion-button>
+								</div>
+							</ion-list>
+
+						</form>
+					</div>
+					<div class="col-md-6">
+						<h3>Colaboradores</h3>
+						<h4 class="my-3" *ngIf="users.length==0">Crear colaboradores</h4>
+						<ion-searchbar placeholder="Search" inputmode="decimal" type="decimal" [(ngModel)]="filter"
+							[debounce]="250"></ion-searchbar>
+						<div id="Layer1" style="width:100%; height:615px; overflow: scroll;">
+							<ion-list *ngIf="users.length>0">
+								<ion-item lines="none" *ngFor="let item of users | filtroColaborrator:filter"
+									class="my-2">
+
+									<ion-label> {{item.names}} </ion-label>
+									<ion-button slot="end" (click)="colProdAdd(item); colProd= !colProd"
+										color="secondary" class="mx-1">
+										<ion-icon slot="icon-only" name="create-outline"
+											style="color: white !important;"></ion-icon>
+									</ion-button>
+									<ion-button slot="end" class="mx-1" (click)="deleteUser(item.id)">
+										<ion-icon slot="icon-only" name="trash"
+											style="color: white !important;"></ion-icon>
+									</ion-button>
+								</ion-item>
+							</ion-list>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+
+<ion-modal [isOpen]="colProd">
+	<ng-template>
+		<ion-toolbar class="back fixed-top">
+			<ion-button (click)="colProd=!colProd" class="ms-3">
+				<ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+			</ion-button>
+		</ion-toolbar>
+
+		<form [formGroup]="userFormEdit" class="mt-5">
+
+			<ion-list lines="none">
+				<ion-item>
+					<ion-input formControlName="names" type="text" placeholder="Fullname"
+						class="bg-white my-2"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-input formControlName="phone" type="text" placeholder="Phone"
+						class="bg-white my-2"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-input formControlName="email" type="text" placeholder="Email" class="bg-white"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Permisos</ion-label>
+					<ion-select formControlName="role" placeholder="Select">
+						<ion-select-option value="ADMIN">Administrador</ion-select-option>
+						<ion-select-option value="GERENTE">Manager</ion-select-option>
+						<ion-select-option value="COLABORADOR">Colaborador</ion-select-option>
+					</ion-select>
+				</ion-item>
+
+
+
+
+
+				<div class="text-center mt-5">
+					<ion-button (click)="editUser()" style="color:white!important" expand="block" shape="round" style="--background : #ff9600; color: white !important;">
+						Guardar
+					</ion-button>
+				</div>
+			</ion-list>
+
+		</form>
+	</ng-template>
+
+</ion-modal>

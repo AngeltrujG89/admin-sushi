@@ -33,6 +33,36 @@ const routes: Routes = [
     canActivate:[ProtectedGuard],
     loadChildren: () => import('./pages/restaurant/restaurant.module').then( m => m.RestaurantPageModule)
   },
+  {
+    path: 'clientes',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/clientes/clientes.module').then(m => m.ClientesPageModule)
+  },
+  {
+    path: 'deliveries',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/delivery/delivery.module').then(m => m.DeliveryPageModule)
+  },
+  {
+    path: 'usuarios',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosPageModule)
+  },
+  { 
+    path: 'cupones',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/cuopons/cuopons.module').then(m => m.CuoponsPageModule)
+  },
+  { 
+    path: 'quejas',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/quejas/quejas.module').then(m => m.QuejasPageModule)
+  },
+  { 
+    path: 'reportes',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/reportes/reportes.module').then(m => m.ReportesPageModule)
+  }
 ];
 
 @NgModule({

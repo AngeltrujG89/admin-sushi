@@ -1,0 +1,96 @@
+<app-nav></app-nav>
+<ion-content class="background-app">
+
+	<div class="container-fluid ">
+
+		<div class="container mt-5 h-100">
+			<h1 class="text-start pt-5">Reportes</h1>
+
+			<div class="container-fluid ">
+
+				<div class="d-flex row  my-4" *ngIf="AllOrders.length > 0">
+
+					<div class="mx-auto">
+						<div class="mx">
+							<div class="text-center">
+								<h4>Buscar por fecha</h4>
+							</div>
+						</div>
+						<div class="d-flex">
+
+							<ion-input [(ngModel)]="start" type="date" placeholder="Initial date"
+								class="bg-white my-2 mx-auto"></ion-input>
+							<ion-input [(ngModel)]="end" type="date" placeholder="Finish date"
+								class="bg-white my-2 mx-auto"></ion-input>
+						</div>
+						<div class="d-flex">
+							<ion-button class="mx-auto" (click)="orders()" shape="round" style="--background : #ff9600;">
+								<div class="text-white">Buscar</div>
+							</ion-button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<h3 class="my-5">
+
+			</h3>
+
+			<div class="row" *ngIf="chartOptions">
+
+				<div class="col-md-4 mx-auto">
+					<apx-chart class="mx-auto w-100 col-md-4" [series]="chartOptions.series"
+						[chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+						[plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis"
+						[xaxis]="chartOptions.xaxis" [title]="chartOptions.title"></apx-chart>
+				</div>
+				<div class="col-md-4 mx-auto" *ngIf="radialBar">
+					<apx-chart [series]="radialBar.series" [chart]="radialBar.chart"
+						[plotOptions]="radialBar.plotOptions" [labels]="radialBar.labels"></apx-chart>
+				</div>
+				<div class="container-fluid col-md-4  mx-auto ">
+
+					<div class="row">
+
+						<div class="mx-auto text-center">
+
+							<div class="my-5">
+								<h1>Total de ventas por día</h1>
+								<h2>{{total() | currency}}</h2>
+								<h6 class="font-weight-bold">(El total ya contiene el descuento de comisión por uso
+									de stripe)</h6>
+
+							</div>
+
+							<!--     <div class="my-3">
+       <h1>Best sellers</h1>
+     </div> -->
+						</div>
+
+
+
+
+					</div>
+
+				</div>
+			</div>
+			<h3 *ngIf="productSeller" class="my-5">
+				Productos Más vendidos
+			</h3>
+			<div class="d-flex" *ngIf="productSeller">
+
+				<div class="text-center">
+
+				</div>
+				<apx-chart class="mx-auto w-100" [series]="productSeller.series" [chart]="productSeller.chart"
+					[dataLabels]="productSeller.dataLabels" [plotOptions]="productSeller.plotOptions"
+					[yaxis]="productSeller.yaxis" [xaxis]="productSeller.xaxis"></apx-chart>
+			</div>
+
+		</div>
+	</div>
+
+</ion-content>

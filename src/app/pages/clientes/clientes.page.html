@@ -1,0 +1,102 @@
+<app-nav></app-nav>
+
+
+<ion-content class="background-app">
+
+	<div class="container mt-5 h-100">
+		<h1 class="text-start pt-5">Clientes</h1>
+		<ion-searchbar placeholder="Search" [(ngModel)]="filter" [debounce]="250"></ion-searchbar>
+		<ion-list *ngIf="users.length >0">
+			<ion-item *ngFor="let item of users | filtroColaborrator:filter">
+				<ion-label>{{item.names}}
+					<p>Phone:{{item.phone}}</p>
+				</ion-label>
+				<ion-label slot="end">
+					<ion-button slot="end" color="secondary" (click)="user=!user; selected = item" class="mx-1">
+						<ion-icon slot="icon-only" name="eye-outline" style="color: white !important;"></ion-icon>
+					</ion-button>
+					<ion-button *ngIf="item.active" slot="end" (click)="block(item.id)" class="mx-1">
+						<ion-icon slot="icon-only" name="lock-open-outline" style="color: white !important;"></ion-icon>
+					</ion-button>
+					<ion-button *ngIf="!item.active" slot="end" (click)="unlock(item.id)" class="mx-1">
+						<ion-icon slot="icon-only" name="lock-closed-outline"
+							style="color: white !important;"></ion-icon>
+					</ion-button>
+					<!--     <ion-button slot="end" (click)="cashback=!cashback" class="text-white">
+            Cashback
+          </ion-button> -->
+				</ion-label>
+			</ion-item>
+		</ion-list>
+		<div *ngIf="users.length ===0">
+			<h2 class="mt-4">Sin clientes</h2>
+		</div>
+	</div>
+
+
+
+	<ion-modal [isOpen]="cashback">
+		<ng-template>
+			<ion-toolbar class="back">
+				<ion-button (click)="cashback=!cashback" class="ms-3">
+					<ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+				</ion-button>
+			</ion-toolbar>
+			<ion-content>
+				<ion-content class="container text-center">
+
+					<ion-label>
+						<h1 class="my-3">Cashback</h1>
+					</ion-label>
+					<ion-input class="shadow my-3" type="number" placeholder="dollar amount"
+						color="primary"></ion-input>
+					<ion-button class="my-3" color="primary" (click)="cash()" shape="round">
+						Guaerdar Cashback
+					</ion-button>
+				</ion-content>
+			</ion-content>
+		</ng-template>
+	</ion-modal>
+
+
+	<ion-modal [isOpen]="user">
+		<ng-template>
+			<ion-toolbar class="back">
+				<ion-button (click)="user=!user" class="ms-3">
+					<ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+				</ion-button>
+			</ion-toolbar>
+			<ion-content>
+				<ion-content class="container">
+
+					<ion-label>
+						<h1 class="ms-4 mt-5">Información del usuario</h1>
+					</ion-label>
+					<ion-list>
+						<ion-item class="ion-margin">
+							<ion-label> Nombre: {{selected.names}}</ion-label>
+						</ion-item>
+						<ion-item class="ion-margin">
+							<ion-label> Fecha de nacimiento: {{selected.birthday}}</ion-label>
+						</ion-item>
+						<ion-item class="ion-margin">
+							<ion-label> Email: {{selected.email}}</ion-label>
+						</ion-item>
+						<ion-item class="ion-margin">
+							<ion-label> Teléfono: {{selected.phone}}</ion-label>
+						</ion-item>
+						<ion-item class="ion-margin">
+							<ion-label> Wallet: {{selected.wallet | currency}}</ion-label>
+						</ion-item>
+						<ion-item class="ion-margin">
+							<ion-label> Total de ordenes: {{selected.orders.length}}</ion-label>
+						</ion-item>
+					</ion-list>
+				</ion-content>
+
+
+			</ion-content>
+		</ng-template>
+	</ion-modal>
+
+</ion-content>

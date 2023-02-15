@@ -1,0 +1,108 @@
+<app-nav></app-nav>
+
+<ion-content class="background-app">
+
+
+
+
+	<br><br><br><br>
+	<div class="container mt-5 ">
+		<h1>Cupones</h1>
+		<div class="row">
+
+
+			<div class="col-md-6">
+				<form [formGroup]="couponForm">
+
+					<ion-list lines="none">
+						<ion-item>
+							<ion-input formControlName="name" type="text" placeholder="Codigo del cupon"
+								class="bg-white my-2"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-input formControlName="description" type="text" placeholder="Descripción"
+								class="bg-white my-2"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-input formControlName="initialDate" type="date" placeholder="Fecha de inicio"
+								class="bg-white my-2"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-input formControlName="date" type="date" placeholder="Fecha de termino"
+								class="bg-white my-2"></ion-input>
+						</ion-item>
+
+						<ion-item>
+							<ion-input formControlName="uses" type="number" placeholder="Cupones usados por usuario"
+								class="bg-white my-2"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-input formControlName="discount" type="number" placeholder="Descuento en porcentaje"
+								class="bg-white my-2"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-label>Descuento en pesos</ion-label>
+							<ion-toggle formControlName="percentage" color="primary" class="border-r"></ion-toggle>
+						</ion-item>
+
+						<ion-item>
+							<ion-label>Cupon de cumpleaños</ion-label>
+							<ion-toggle formControlName="isBirthday" color="primary" class="border-r"></ion-toggle>
+						</ion-item>
+
+
+						<ion-item>
+							<ion-label>Aplicar para todos los productos</ion-label>
+							<ion-toggle [disabled]="!couponForm.controls['branch'].value" formControlName="allProducts"
+								color="primary" class="border-r"></ion-toggle>
+						</ion-item>
+						<ion-item *ngIf="!couponForm.controls['allProducts'].value">
+							<ion-label>Productos</ion-label>
+							<ion-select formControlName="products" multiple="true" placeholder="select">
+
+								<ion-select-option [value]="item.id"
+									*ngFor="let item of products">{{item.name}}</ion-select-option>
+							</ion-select>
+						</ion-item>
+
+						<div class="text-center mt-5">
+							<ion-button (click)="save()" style="color:white!important" expand="block" shape="round">
+								Guardar
+							</ion-button>
+						</div>
+					</ion-list>
+
+				</form>
+			</div>
+
+
+
+			<div class="col-md-6">
+				<h1 *ngIf="coupons.length == 0">Sin cupones</h1>
+				<ion-item *ngFor="let item of coupons">
+
+					<ion-label>
+						<ion-button (click)="delete(item.id)" class="me-3 mb-1">
+							<ion-icon class="text-white" slot="icon-only" name="trash"></ion-icon>
+						</ion-button>
+						{{item.name}}
+						<p class="ms-5">Description: {{item.description}}</p>
+						<p class="mt-2 ms-5">Branch: {{item.branch.name}}</p>
+					</ion-label>
+					<ion-label slot="end" *ngIf="item.percentage">
+						Discount: {{item.discount}}%
+					</ion-label>
+					<ion-label slot="end" *ngIf="!item.percentage">
+						Discount: {{item.discount | currency}}
+					</ion-label>
+				</ion-item>
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+</ion-content>

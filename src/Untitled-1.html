@@ -1,0 +1,22 @@
+<ion-footer collapse="fade" class="footer" *ngIf="['/','/login'].indexOf(this.router.url) == -1">
+	<ion-toolbar>
+		<ion-tab-button [routerLink]="['/dashboard']" style="--color: black !important;">
+			<ion-icon name="home" style="color: white;"></ion-icon>
+			<!-- <ion-label>Inicio</ion-label> -->
+			<!-- <ion-badge>6</ion-badge> -->
+		  </ion-tab-button>
+		  <ion-tab-button [routerLink]="['/dashboard']" style="--color: black !important;">
+			<ion-icon name="log-in" style="color: white;"></ion-icon>
+			<!-- <ion-label>Inicio</ion-label> -->
+			<!-- <ion-badge>6</ion-badge> -->
+		  </ion-tab-button>
+		<!-- <div class="row d-flex justify-content-center">
+			<button class="col-1 btn-home" routerLink="/dashboard">
+			  <ion-icon name="home"></ion-icon>
+		  </button>
+		  <button class="col-1 btn-logout">
+			  <ion-icon name="log-in"></ion-icon>
+		  </button>
+		</div> -->
+	</ion-toolbar>
+</ion-footer>

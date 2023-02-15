@@ -1,0 +1,121 @@
+<app-nav></app-nav>
+
+
+<ion-content class="background-app">
+
+
+	<div class="container mt-5">
+		<br>
+		<h1 class="mt-5">Envios</h1>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="my-3"> Solicitudes de conductor</h3>
+				<ion-item *ngFor="let item of request">
+					<div *ngIf="!item.active">
+						<ion-label>{{item.id.email}}</ion-label>
+						<ion-button slot="end" color="secondary" (click)="view=!view; select(item)">
+							<ion-icon slot="icon-only" name="eye-outline" class="text-white"></ion-icon>
+						</ion-button>
+						<ion-button *ngIf="item.active" slot="end" class="ms-2" (click)="desactive(item.id_delivery)">
+							<ion-icon slot="icon-only" name="close-outline" class="text-white"></ion-icon>
+						</ion-button>
+
+						<ion-button *ngIf="!item.active" slot="end" class="ms-2" (click)="active(item.id_delivery)">
+							<ion-icon slot="icon-only" name="checkmark-done-outline" class="text-white"></ion-icon>
+						</ion-button>
+					</div>
+				</ion-item>
+			</div>
+			<div class="col-md-6">
+				<h3 class="my-3">Lista de entregas</h3>
+
+
+				<ion-list>
+					<ion-item *ngFor="let item of request">
+						<div *ngIf="item.active" class="container">
+							<ion-label>{{item.id.names}}</ion-label>
+							<ion-button slot="end" color="secondary" (click)="view=!view; select(item)">
+								<ion-icon slot="icon-only" name="eye-outline" class="text-white"></ion-icon>
+							</ion-button>
+							<ion-button *ngIf="item.active" slot="end" class="ms-2"
+								(click)="desactive(item.id_delivery)">
+								<ion-icon slot="icon-only" name="close-outline" class="text-white"></ion-icon>
+							</ion-button>
+						</div>
+					</ion-item>
+				</ion-list>
+			</div>
+		</div>
+
+	</div>
+
+</ion-content>
+
+
+<ion-modal [isOpen]="view">
+	<ng-template>
+		<ion-toolbar class="back fixed-top ">
+			<ion-button (click)="view=!view" class="ms-3">
+				<ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+			</ion-button>
+		</ion-toolbar>
+		<ion-content [fullscreen]="true">
+
+			<div class="mt-5 container d-flex">
+
+				<div class="w-100">
+					<h3 class="text-center m-auto mt-5 
+          ">Datos de envío</h3>
+					<table class="table">
+
+						<tbody>
+							<tr>
+								<img src="{{URL + viewSelect.id.image}}" width="200" alt="">
+							</tr>
+							<tr>
+								<th scope="row">Nombre</th>
+								<td>{{viewSelect.id.names}}</td>
+							</tr>
+							<tr>
+								<th scope="row">Teléfono</th>
+								<td>{{viewSelect.id.names}}</td>
+							</tr>
+							<tr>
+								<th scope="row">Email</th>
+								<td>{{viewSelect.id.email}}</td>
+							</tr>
+
+						</tbody>
+					</table>
+					<h3 class="text-center">
+						Informacion del vehiculo
+					</h3>
+					<table class="table">
+
+						<tbody>
+
+							<tr>
+								<th scope="row">Tipo</th>
+								<td>{{viewSelect.tipo_vehiculo}}</td>
+							</tr>
+							<tr>
+								<th scope="row">Modelo</th>
+								<td>{{viewSelect.model}}</td>
+							</tr>
+
+							<tr>
+								<th scope="row">Licencia</th>
+								<td> <img src="{{URL + viewSelect.photo_licencia}}" width="300" alt=""></td>
+							</tr>
+							<tr>
+								<th scope="row">Seguro del vehiculo</th>
+								<td> <img src="{{URL + viewSelect.photo_seguro}}" width="300" alt=""></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</ion-content>
+	</ng-template>
+</ion-modal>
