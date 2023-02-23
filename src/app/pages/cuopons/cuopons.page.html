@@ -42,19 +42,19 @@
 						</ion-item>
 						<ion-item>
 							<ion-label>Descuento en pesos</ion-label>
-							<ion-toggle formControlName="percentage" color="primary" class="border-r"></ion-toggle>
+							<ion-toggle formControlName="percentage"  class="border-r"></ion-toggle>
 						</ion-item>
 
 						<ion-item>
 							<ion-label>Cupon de cumpleaños</ion-label>
-							<ion-toggle formControlName="isBirthday" color="primary" class="border-r"></ion-toggle>
+							<ion-toggle formControlName="isBirthday"  class="border-r"></ion-toggle>
 						</ion-item>
 
 
 						<ion-item>
 							<ion-label>Aplicar para todos los productos</ion-label>
 							<ion-toggle [disabled]="!couponForm.controls['branch'].value" formControlName="allProducts"
-								color="primary" class="border-r"></ion-toggle>
+								 class="border-r"></ion-toggle>
 						</ion-item>
 						<ion-item *ngIf="!couponForm.controls['allProducts'].value">
 							<ion-label>Productos</ion-label>
@@ -66,7 +66,7 @@
 						</ion-item>
 
 						<div class="text-center mt-5">
-							<ion-button (click)="save()" style="color:white!important" expand="block" shape="round">
+							<ion-button (click)="save()" style="color:white!important" expand="block" shape="round" style="--background:#ff9600;">
 								Guardar
 							</ion-button>
 						</div>

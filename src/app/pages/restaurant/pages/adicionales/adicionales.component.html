@@ -16,8 +16,8 @@
           <ion-toggle  slot="start" [(ngModel)]="canFree"  [checked]="canFree" class="border-r me-3"> </ion-toggle>
          </ion-item>
 
-        <div class="text-center mt-5">
-          <ion-button (click)="create()" [disabled]="name===null || price===null" style="color:white!important" expand="block" shape="round" style="--background: #ff9600;">
+        <div class="text-center mt-5 d-flex justify-content-center">
+          <ion-button class="col-4" (click)="create()" [disabled]="name===null || price===null" style="color:white!important" expand="block" shape="round" style="--background: #ff9600;">
           Guardar
           </ion-button>
         </div>
@@ -50,7 +50,7 @@
 <ion-modal [isOpen]="editAdd">
   <ng-template heigth="100%">
    <ion-toolbar class="back fixed-top " style="background-color: black;">
-     <ion-button (click)="editAdd=!editAdd; productsEdit=[]" class="ms-3" style="--background: #d6e601;"> 
+     <ion-button (click)="editAdd=!editAdd; productsEdit=[]" class="ms-3" style="--background: #ff9600;"> 
        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
      </ion-button>
    </ion-toolbar>

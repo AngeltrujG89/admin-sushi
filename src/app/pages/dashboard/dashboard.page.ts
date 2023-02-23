@@ -4,6 +4,7 @@ import { PopoverController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 import { Eventos, Status } from 'src/app/enums/sockets.enum';
 import { OptionsCollaboratorsComponent } from 'src/app/shared/components/options-collaborators/options-collaborators.component';
+import { OptionsMarketingComponent } from 'src/app/shared/components/options-marketing/options-marketing.component';
 import { OptionsRestaurantsComponent } from 'src/app/shared/components/options-restaurants/options-restaurants.component';
 import { AuthRepo } from 'src/app/shared/repos/auth.repository';
 import { OrderRepo } from 'src/app/shared/repos/orders.repository';
@@ -57,6 +58,22 @@ export class DashboardPage implements OnInit {
       	case "collaborators":
         	popover = await this.popoverController.create({
           		component: OptionsCollaboratorsComponent,
+          		cssClass: 'popOver',
+          		event: ev,
+          		mode: 'ios',
+          		translucent: true
+        	});
+        break
+    }
+    await popover.present()
+  }
+
+  async optionsMarket(ev: any, tipo : string) {
+    let popover : any
+    switch (tipo) {
+      	case "marketing":
+        	popover = await this.popoverController.create({
+          		component: OptionsMarketingComponent,
           		cssClass: 'popOver',
           		event: ev,
           		mode: 'ios',

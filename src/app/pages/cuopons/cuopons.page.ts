@@ -24,18 +24,18 @@ export class CuoponsPage implements OnInit {
   ngOnInit() {
 
     this.couponForm = this.fb.group({
-    name:[null,Validators.required],
-    active:[true,Validators.required],
-    date:[null,Validators.required],
-    description:[null,Validators.required],
-    uses:[null,Validators.required],
-    products: [[]],
-    allProducts:[true,Validators.required],
-    discount:[null,Validators.required],
-    percentage:[false,Validators.required],
-    orders:[null],
-    isBirthday:[false],
-    initialDate:[null,Validators.required],
+      name:[null,Validators.required],
+      active:[true,Validators.required],
+      date:[null,Validators.required],
+      description:[null,Validators.required],
+      uses:[null,Validators.required],
+      products: [[]],
+      allProducts:[true,Validators.required],
+      discount:[null,Validators.required],
+      percentage:[false,Validators.required],
+      orders:[null],
+      isBirthday:[false],
+      initialDate:[null,Validators.required],
     });
 
     this.couponS.getAll("coupons").subscribe( (res : any) => {

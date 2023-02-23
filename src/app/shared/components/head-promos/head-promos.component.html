@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar class="back fixed-top">
+        <ion-buttons slot="start">
+            <ion-button (click)="cancelChanges();" style="--background: #ff9600">Cancelar</ion-button>
+        </ion-buttons>
+        <ion-title class="text-center">
+            {{title}}
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="confirmChanges();" style="--background: #d6e601">
+                Hecho
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>    
+</ion-header>
+
+
+<br>
+<br>
+<br>
+<ion-content color="light" class="ion-padding">
+    <ion-list id="modal-list" [inset]="true" >
+        <ion-checkbox id="checkAll" (ionChange)="selectAllItems('checkAll')"></ion-checkbox>
+        <ion-label>&nbsp;&nbsp;Seleccionar todos</ion-label>
+        <ion-item *ngFor="let item of filteredItems; trackBy : trackItems">
+            <ion-checkbox
+                [value]="item.id"
+                [checked]="isChecked(item.value)"
+                (ionChange)="checkboxChange($event)"
+            >
+                {{item.name}}
+            </ion-checkbox>
+            <label for="">&nbsp;&nbsp;{{item.name}}</label>
+        </ion-item>
+    </ion-list>
+</ion-content>

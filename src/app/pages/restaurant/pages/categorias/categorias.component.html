@@ -7,8 +7,8 @@
         <ion-item>
          <ion-input [(ngModel)]="name" type="text" placeholder="Nombre de la categoría" class="bg-white"></ion-input>
         </ion-item>
-        <div class="text-center mt-5">
-          <ion-button id="btn-save"  (click)="save()" [disabled]="name.length===0" style="color:white!important; --background: #ff9600;" expand="block" shape="round">
+        <div class="text-center mt-5 d-flex justify-content-center">
+          <ion-button class="col-4" id="btn-save"  (click)="save()" [disabled]="name.length===0" style="color:white!important; --background: #ff9600;" expand="block" shape="round">
           Guardar
           </ion-button>
         </div>
@@ -41,7 +41,7 @@
 <ion-modal [isOpen]="editModal">
   <ng-template>
     <ion-toolbar class="back" style="background-color: black;">
-      <ion-button (click)="editModal=!editModal" class="ms-3" style="--background: #d6e601;">
+      <ion-button (click)="editModal=!editModal" class="ms-3" style="--background: #ff9600;">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-toolbar>

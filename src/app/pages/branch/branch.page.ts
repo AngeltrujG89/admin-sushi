@@ -184,7 +184,7 @@ dias:any = [
     }
 
     if(!this.branchForm.valid){
-      this.toast.error('Complete the form to save');
+      this.toast.error('Completa el formulario para guardar');
       return;
     }
     const form = new FormData();
@@ -199,7 +199,7 @@ dias:any = [
       form.append("image",this.imagen)
     }
     this.GenericS.postWhitImage("branch",form).subscribe( (res: any) => {
-      this.toast.success("Branchs Created");
+      this.toast.success("Sucursal Creada");
       this.branchForm.reset({
         rate:[0]
       });
@@ -219,15 +219,16 @@ async deleteBranch(id: number){
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'Delete Category',
-    message: 'If you delete this Branch, you would <strong>delete all the products, categories and additional products related to it!!! </strong> <br>    Do you agree? ',
+    message: 'Si eliminas esta sucursal, eliminarías todos los productos, categorias y adicionales relacionadas a ella!, ¿Aceptar?',
+    // message: 'If you delete this Branch, you would <strong>delete all the products, categories and additional products related to it!!! </strong> <br>    Do you agree? ',
     buttons: [
       {
-        text: 'Cancel',
+        text: 'Cancelar',
         role: 'cancel',
         cssClass: 'secondary',
         id: 'cancel-button',
       }, {
-        text: 'Okay',
+        text: 'Ok',
         id: 'confirm-button',
         handler: () => {
             this.GenericS.delete("branch",id).subscribe( (res:any) =>{
@@ -276,7 +277,7 @@ editBranch(){
 
   this.GenericS.updateWhitImage("branch",this.branchForm.controls["id"].value,form).subscribe( (res: any) => {
 
-   this.toast.success("Updated success")
+   this.toast.success("Actualización correcta")
     this.branchRepo.updateBranch(res.id,res)
     this.resetEdit()
     this.data = false;
@@ -303,41 +304,41 @@ resetEdit(){
 resetDias(){
   this.dias = [
     {
-      name:"MONDAY",
+      name:"LUNES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"TUESDAY",
+      name:"MARTES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"WEDNESDAY",
+      name:"MIERCOLES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"THURSDAY",
+      name:"JUEVES",
       open:"9:00",
       close:"18:00",
       active:true
     },
     {
-      name:"FRIDAY",
+      name:"VIERNES",
       open:"9:00",
       close:"18:00",
       active:true
     },{
-      name:"SATURDAY",
+      name:"SABADO",
       open:"9:00",
       close:"18:00",
       active:true
     },{
-      name:"SUNDAY",
+      name:"DOMINGO",
       open:"9:00",
       close:"18:00",
       active:true
@@ -355,7 +356,7 @@ resetDireccion(){
 
 updateAddress(){
   this.GenericS.update("address",this.direccion.id || 0,this.direccion).subscribe( add =>{
-    this.toast.success("Address Saved");
+    this.toast.success("Dirección Guardada");
     this.branchs = this.branchs.map( (b:any) =>
       b.address.id===this.direccion.id ? {...b,address:add} : b
     )
@@ -367,7 +368,7 @@ this.GenericS.update("branch",this.id,{dias:this.dias}).subscribe(
   (res:any) =>{
   this.branchRepo.updateBranch(this.id,res)
   this.resetDias()
-  this.toast.success("Schedule updated")
+  this.toast.success("Itenerario Actualizado")
   this.days=false;
   }
 )

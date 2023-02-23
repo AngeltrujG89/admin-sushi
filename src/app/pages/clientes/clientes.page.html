@@ -5,7 +5,7 @@
 
 	<div class="container mt-5 h-100">
 		<h1 class="text-start pt-5">Clientes</h1>
-		<ion-searchbar placeholder="Search" [(ngModel)]="filter" [debounce]="250"></ion-searchbar>
+		<ion-searchbar placeholder="Buscar" [(ngModel)]="filter" [debounce]="250"></ion-searchbar>
 		<ion-list *ngIf="users.length >0">
 			<ion-item *ngFor="let item of users | filtroColaborrator:filter">
 				<ion-label>{{item.names}}

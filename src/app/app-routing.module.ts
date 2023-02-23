@@ -49,7 +49,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosPageModule)
   },
   { 
-    path: 'cupones',
+    path: 'coupons',
     canActivate:[ProtectedGuard],
     loadChildren: () => import('./pages/cuopons/cuopons.module').then(m => m.CuoponsPageModule)
   },
@@ -62,6 +62,11 @@ const routes: Routes = [
     path: 'reportes',
     canActivate:[ProtectedGuard],
     loadChildren: () => import('./pages/reportes/reportes.module').then(m => m.ReportesPageModule)
+  },
+  { 
+    path: 'promociones',
+    canActivate:[ProtectedGuard],
+    loadChildren: () => import('./pages/promotions/promotions.module').then(m => m.PromotionsModule)
   }
 ];
 

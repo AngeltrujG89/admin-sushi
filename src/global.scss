@@ -290,13 +290,14 @@ ngx-dropzone{
 
 }
 ion-checkbox{
-    --checkmark-color: var(--color-check);
-    --background: var(--color-primario);
-    --border-color: var(--color-primario);
-    --background-checked: var(--color-primario);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    --border-color-checked: var(--color-primario);
+    // --checkmark-color: var(--color-check);
+    // --background: var(--color-primario);
+    // --border-color: var(--color-primario);
+    // --background-checked: var(--color-primario);
+    // -webkit-backdrop-filter: saturate(180%) blur(20px);
+    // backdrop-filter: saturate(180%) blur(20px);
+    // --border-color-checked: var(--color-primario);
+    --border-color: #d6e601;
 }
 .btnPrimary{
     background-color: var(--color-primario) !important;
@@ -401,15 +402,15 @@ input[type="date"] {
     backdrop-filter: saturate(180%) blur(20px)
   }
 ion-radio{
+    --color-checked	: #ff9600;
+    --color: #ff9600;
+    // --border-color: var(--color-primario);
 
-    --background: var(--color-primario);
-    --border-color: var(--color-primario);
-
-    --background-checked: var(--color-primario);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    --border-color-checked: var(--color-primario);
-    --color-checked: var(--color-textos);
+    // --background-checked: var(--color-primario);
+    // -webkit-backdrop-filter: saturate(180%) blur(20px);
+    // backdrop-filter: saturate(180%) blur(20px);
+    // --border-color-checked: var(--color-primario);
+    // --color-checked: var(--color-textos);
 }
 ion-list{
     --ion-item-background-color: transparent;

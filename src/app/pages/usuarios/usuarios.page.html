@@ -62,7 +62,7 @@
 					<div class="col-md-6">
 						<h3>Colaboradores</h3>
 						<h4 class="my-3" *ngIf="users.length==0">Crear colaboradores</h4>
-						<ion-searchbar placeholder="Search" inputmode="decimal" type="decimal" [(ngModel)]="filter"
+						<ion-searchbar placeholder="Buscar" inputmode="decimal" type="decimal" [(ngModel)]="filter"
 							[debounce]="250"></ion-searchbar>
 						<div id="Layer1" style="width:100%; height:615px; overflow: scroll;">
 							<ion-list *ngIf="users.length>0">

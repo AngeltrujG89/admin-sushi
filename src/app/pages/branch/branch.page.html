@@ -58,7 +58,7 @@
 <ion-modal [backdropDismiss]="false" [isOpen]="days">
   <ng-template>
     <ion-toolbar class="back fixed-top " style="background-color: black;">
-      <ion-button *ngIf="!individual" (click)="days=!days; ; individual=false" class="ms-3" style="--background: #d6e601;">
+      <ion-button *ngIf="!individual" (click)="days=!days; ; individual=false" class="ms-3" style="--background: #ff9600;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
 
@@ -158,10 +158,10 @@
 <ion-modal [backdropDismiss]="false" [isOpen]="data">
   <ng-template>
     <ion-toolbar class="back fixed-top " style="background-color: black;">
-      <ion-button *ngIf="!individual" (click)="data=!data; days=!days ; ; individual=false" class="ms-3" style="--background: #d6e601;">
+      <ion-button *ngIf="!individual" (click)="data=!data; days=!days ; ; individual=false" class="ms-3" style="--background: #ff9600;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
-      <ion-button *ngIf="individual" (click)="data=!data; resetDias() ; individual=false" class="ms-3" style="--background: #d6e601;">
+      <ion-button *ngIf="individual" (click)="data=!data; resetDias() ; individual=false" class="ms-3" style="--background: #ff9600;">
         <ion-icon slot="icon-only" class="text-white" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-toolbar>

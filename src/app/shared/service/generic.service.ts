@@ -15,8 +15,8 @@ export class GenericService {
     getOne(ruta:string,id:number | string){
       return this.http.get(this.Uri+ruta+'/'+id)
     }
-    getAll(ruta:string,){
-      return this.http.get(this.Uri+ruta)
+    getAll(ruta:string,params?:any){
+      return this.http.get(this.Uri+ruta,{params})
     }
     delete(ruta:string,id:number){
       return this.http.delete(this.Uri+ruta+'/'+id)

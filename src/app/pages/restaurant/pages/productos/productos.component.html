@@ -55,8 +55,8 @@
                   <ion-button (click)="image()" class="ion-margin"  expand="block" shape="round" style="--background: #d6e601;">
                     {{imagen ?'Cargar otra imagen':'Cargar imagen'}}
                      </ion-button>
-                  <div class="text-center mt-5">
-                    <ion-button  (click)="save()" [disabled]="!productForm.valid" style="color:white!important" expand="block" shape="round" style="--background: #ff9600;">
+                  <div class="text-center mt-5 d-flex justify-content-center">
+                    <ion-button class="col-4"  (click)="save()" [disabled]="!productForm.valid" style="color:white!important" expand="block" shape="round" style="--background: #ff9600;">
                     Guardar
                     </ion-button>
                   </div>

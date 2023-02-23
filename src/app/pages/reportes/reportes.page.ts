@@ -62,15 +62,15 @@ export class ReportesPage implements OnInit {
     this.role = res[0].role;
 
     const branch = res.role === Roles.ADMIN ? undefined : localStorage.getItem('branch');
-    // this.genericS.getAll("orders",{start:moment('01-01'+ new Date().getFullYear(),'DD-MM-YYYY').format()}).subscribe((res: any) => {
-    //   console.log(res);
-    //   this.chartOrder(res)
-    //   this.BestSellerProduct()
-    //     this.AllOrders = res.filter((ord:any) => !ord.cancelado);
-    //     this.Today = new Date().toISOString().substr(0, 10);
-    //     this.orderForToday();
-    //     this.order(this.Orders);
-    //   })
+    this.genericS.getAll("orders",{start:moment('01-01'+ new Date().getFullYear(),'DD-MM-YYYY').format()}).subscribe((res: any) => {
+      console.log(res);
+      this.chartOrder(res)
+      this.BestSellerProduct()
+        this.AllOrders = res.filter((ord:any) => !ord.cancelado);
+        this.Today = new Date().toISOString().substr(0, 10);
+        this.orderForToday();
+        this.order(this.Orders);
+      })
    })
 
 
@@ -232,7 +232,7 @@ BestSellerProduct(){
       }
     },
     title: {
-      text: "Products Best Sellers",
+      text: "Productos mas vendidos",
       floating: false,
       offsetY: 320,
       align: "center",
